@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta charset="UTF-8">
+  <title>天地行B2B平台欢迎您！</title>
+
+  <link href="../css/normalize.css" rel="stylesheet" />
+  <link href="../css/youlun.css" rel="stylesheet" />
+  <link href="../css/kendo/kendo.common.min.css" rel="stylesheet" />
+  <link href="../css/kendo.gray.css" rel="stylesheet" />
+
+  <script type="text/javascript" src="../js/jquery.min.js"></script>
+  <script type="text/javascript" src="../js/head.min.js"></script>
+  <!--[if lt ie 7]>
+    <script type="text/javascript" src="../js/ie7.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<div class="head clearfix">
+  <h1 class="logo">
+    <a href="#"><span>天地行B2B交易平台</span></a>
+  </h1>
+  <div class="nav-top">
+    <div class="menu-quick">
+      <div class="mqr mqr1">
+        <a href="#">站点首页</a> |
+        <a href="#">个人设置</a> |
+        <a href="#">帮助中心</a> |
+        [<a href="#">退出</a>]
+      </div>
+      <div class="mqr mqr2">
+        欢迎您！dmin
+        [<a href="#">采购商</a>]
+      </div>
+    </div>
+    <div class="menu-main clearfix">
+      <ul>
+        <li>
+        <a href="首页.html">国内机票</a>
+        </li>
+        <li>
+        <a href="首页.html">国际机票</a>
+        </li>
+        <li>
+        <a href="首页.html">酒 店</a>
+        </li>
+        <li>
+        <a href="首页.html">保 险</a>
+        </li>
+        <li class="current">
+        <a href="首页.html">邮轮</a>
+        </li>
+        <li>
+        <a href="首页.html">政策管理</a>
+        </li>
+        <li>
+        <a href="首页.html">财务管理</a>
+        </li>
+        <li>
+        <a href="首页.html">统计报表</a>
+        </li>
+        <li>
+        <a href="首页.html">系统管理</a>
+        </li>
+      </ul>
+    </div>
+    <div class="icon24">&nbsp;</div>
+  </div>
+</div>
+
+<div class="body clearfix">
+  <div class="sidebar">
+    <div class="menu-sidebar">
+      <dl>
+        <dt class="menu-title"><a href="#">首页</a></dt>
+        <dd class="menu-item"></dd>
+      </dl>
+      <dl>
+        <dt class="menu-title"><a href="#">我的订单</a></dt>
+        <dd class="menu-item"></dd>
+      </dl>
+      <dl>
+        <dt class="menu-title"><a href="#">公司信息</a></dt>
+        <dd class="menu-item"></dd>
+      </dl>
+    </div>
+  </div>
+  <div class="breadcrumb">
+    <span><i class="icon icon3"></i>当前位置： <a href="cgs1.html">邮轮</a> &gt; 邮轮详情</span>
+  </div>
+  <div class="content area">
+    <div class="mo-cgs7 clearfix">
+      <div class="block" id="query_block">
+        <h3 class="gray-title">订单查询</h3> 
+        <div class="block-body">
+          <div class="row row1">
+             <span class="label">&#12288;关键字：</span> 
+             <span class="text">
+                <input id="" class="k-input" name="" type="text" /> 
+                <input type="submit" class="button button6" value="查询" />
+             </span>
+             <a href="javascript:;" id="more_condition">
+               更多查询条件
+               <b class="k-icon k-i-arrow-s"></b>
+             </a>
+          </div>
+          <div class="row row2" id="more_condition_wrapper">
+            <table>
+              <tr>
+                <th>预订日期：</th>
+                <td colspan=3>
+                  <input id="start_date" class="datepicker" data-role="datepicker" name="" type="text" /> 
+                  至
+                  <input id="end_date" class="datepicker" data-role="datepicker" name="" type="text" /> 
+                </td>
+                <th>&#12288;订单号：</th>
+                <td>
+                  <input id="" class="k-input" name="" type="text" /> 
+                </td>
+              </tr>
+              <tr>
+                  <th>邮轮航线：</th>
+                  <td>
+                    <select id="" data-role="dropdownlist" name=""><option value="">不限</option></select> 
+                  </td>
+                  <th>开航日期：</th>
+                  <td>
+                    <select id="" data-role="dropdownlist" name=""><option value="">不限</option></select> 
+                  </td>
+                  <th>邮轮公司：</th>
+                  <td>
+                    <select id="" data-role="dropdownlist" name=""><option value="">不限</option></select> 
+                  </td>
+              </tr>
+              <tr>
+                  <th>船票类型：</th>
+                  <td>
+                    <select id="" data-role="dropdownlist" name=""><option value="">不限</option></select> 
+                  </td>
+                  <th>上船地点：</th>
+                  <td>
+                    <select id="" data-role="dropdownlist" name=""><option value="">不限</option></select> 
+                  </td>
+                  <th></th>
+                  <td></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div> 
+
+        <div class="block border-box clearfix">
+          <span class="label">
+          我的订单提醒：
+          </span>
+          <span class="text">
+            <s>
+              待付款<b>（5）</b>
+            </s>
+            <s>
+              待付尾款<b>（5）</b>
+            </s>
+            <s>
+              待录入旅客资料<b>（5）</b>
+            </s>
+            <s>
+              待上传实体资料<b>（5）</b>
+            </s>
+          </span>
+          <a href="cgs11.html" target="_blank" style="float:right;">相关模板及资料说明</a>
+        </div>
+
+        <div class="xblock buttons">
+<select id="filter_grid">
+<option selected="" value="未出行订单">未出行订单</option>
+<option value="全部订单">全部订单</option>
+<option value="待处理">待处理</option>
+<option value="待付首款">待付首款</option>
+<option value="待付尾款">待付尾款</option>
+<option value="付款成功">付款成功</option>
+<option value="已出行">已出行</option>
+<option value="已取消">已取消</option>
+<option value="退票订单">退票订单</option>
+</select>
+        </div>
+        <div class="block" id="order_grid"></div>
+<script type="text/template" id="action_tpl">
+          <a href="" class="k-button">查看订单</a> 
+          <a href="" class="k-button">取消订单</a> 
+          <a href="" class="k-button upload_certificate">上传汇款凭证</a> 
+          <a href="" class="k-button upload_attachment">上传附件</a> 
+          <a href="" class="k-button">付款</a> 
+          <a href="" class="k-button refund">申请退款</a> 
+</script>
+<div id="window"></div>
+<script type="text/template" id="upload_attachment_window">
+    <div class="row row1">
+       <input id="" name="" type="file" /> 
+    </div>
+    <div class="row row2">
+        附件格式为：.doc; .docx;.xls; .xlsx;.txt; .jpg;.bmp;.png;.gif
+    </div>
+    <div align="right" class="row row3">
+    <input type="submit" class="k-button" value="确定" />
+    </div>
+</script>
+<script type="text/template" id="upload_certificate_window">
+      <table class="table-b6">
+        <tr>
+          <th>充值金额：</th>
+          <td>
+            <input id="" name="" type="text" class="k-input" /> 
+          </td>
+        </tr>
+        <tr>
+          <th>确认充值金额：</th>
+          <td>
+            <input id="" name="" type="text" class="k-input" /> 
+          </td>
+        </tr>
+        <tr>
+          <th>充值金额大写：</th>
+          <td>
+            <input id="" name="" type="text" class="k-input" /> 
+          </td>
+        </tr>
+        <tr>
+          <th>汇款人姓名：</th>
+          <td>
+            <input id="" name="" type="text" class="k-input" /> 
+          </td>
+        </tr>
+        <tr>
+          <th>收款银行账户：</th>
+          <td>
+            <input id="" name="" type="text" class="k-input" /> 
+          </td>
+        </tr>
+        <tr>
+          <th>凭单号或流水支付号：</th>
+          <td>
+            <input id="" name="" type="text" class="k-input" /> 
+          </td>
+        </tr>
+        <tr>
+          <th>说明：</th>
+          <td>
+            <textarea id="" class="k-textbox" name="" style="width:300px;height:40px;"></textarea>
+          </td>
+        </tr>
+        <tr>
+          <th></th>
+          <td>
+          <input type="submit" value="提交" class="k-button" />
+          <input type="reset" value="重置" class="k-button" />
+          </td>
+        </tr>
+      </table>
+</script>
+<script type="text/template" id="refund_window">
+    <table class="table-b6">
+    <tr>
+      <th>退票<b>*</b>：</th> 
+      <td>
+        <label for="xxx">
+          <input id="" name="xxx" type="radio" /> 
+          需要
+        </label>
+        <label for="xxx">
+          <input id="" name="xxx" type="radio" /> 
+          不需要
+        </label>
+      </td>
+    </tr>
+    <tr>
+    <th>退回原因<b>*</b>：</th>
+      <td>
+<select>
+<option selected="" value="请选择">请选择</option>
+<option value="退船票">退船票</option>
+<option value="签证费">签证费</option>
+<option value="保险费">保险费</option>
+<option value="港务费">港务费</option>
+<option value="其它">其它</option>
+</select>
+      </td>
+    </tr>
+    <tr>
+    <th>退回金额 <b>*</b>：</th>
+      <td>
+     <input id="" class="k-input" name="" type="text" /> 
+      </td>
+    </tr>
+    <tr>
+      <th>退回说明：</th>
+      <td>
+        <textarea id="" class="k-textbox" name="" style="width:300px;height:40px;"></textarea> 
+      </td>
+    </tr>
+    <tr>
+      <th></th>
+      <td>
+        <input type="button" class="k-button" value="撤销" />
+        <input type="button" class="k-button" value="取消" />
+        <input type="button" class="k-button" value="确定" />
+      </td>
+    </tr>
+    </table>
+</script>
+    </div>
+  </div>
+</div>
+<i class="toggle-arrow arrow4"></i>
+<script type="text/javascript" src="../js/youlun.js"></script>
+</body>
+</html>
