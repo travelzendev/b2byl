@@ -110,7 +110,6 @@ head.ready(function(){
     });
 
     $('#submit').bind('click',function(e){
-        e.preventDefault();
         //存储在本地，不提交
        var submited = viewModel.toJSON();
        store.set('order_submited',submited);
