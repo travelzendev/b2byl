@@ -2,6 +2,8 @@ head.ready(function(){
 
     var submited = store.get('cgs_submited_data');
 
+        console.dir(submited.others_info[0]);
+
     // $.extend(submited,contact_info,delivery_info,invoice_info);
 
     submited.contact_info = contact_info;
@@ -89,7 +91,8 @@ head.ready(function(){
         {field:"price",title:"单价",format:"¥{0}"},
         {field:"count",title:"份数"},
         {title:"小计",
-            template: "¥#= kendo.toString(count*price) #",
+            // 兼容性问题
+            // template: "¥#= kendo.toString(count*price) #",
         }
     ];
 
@@ -106,11 +109,12 @@ head.ready(function(){
         // console.log(e);
     });
 
-    $('#submit').bind('click',function(){
+    $('#submit').bind('click',function(e){
+        e.preventDefault();
         //存储在本地，不提交
        var submited = viewModel.toJSON();
        store.set('order_submited',submited);
-       console.log(submited);
+       // console.log(submited);
     });
 
 });

@@ -128,16 +128,18 @@ head.ready(function(){
     kendo.bind($(".content"), viewModel);
 
     viewModel.bind('change',function(e){
-        console.log(e);
+        // console.log(e);
     });
 
-    $('#submit').bind('click',function(){
+    $('#submit').bind('click',function(e){
+        e.preventDefault();
         //存储在本地，不提交
        var submited = viewModel.toJSON();
 
         store.set('cgs_submited_data', submited);
+
         location.href="cgs5.html";
-        console.log(submited);
+        // console.log(submited);
     });
 
 });

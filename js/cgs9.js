@@ -90,7 +90,8 @@ head.ready(function(){
         {field:"price",title:"单价",format:"¥{0}"},
         {field:"count",title:"份数"},
         {title:"小计",
-            template: "¥#= kendo.toString(count*price) #",
+        //兼容性问题
+            // template: "¥#= kendo.toString(count*price) #",
         }
     ];
 
@@ -111,7 +112,7 @@ head.ready(function(){
         //存储在本地，不提交
        var submited = viewModel.toJSON();
        store.set('order_submited',submited);
-       console.log(submited);
+       // console.log(submited);
     });
 
 
