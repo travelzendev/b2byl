@@ -27,6 +27,7 @@ head.ready(function(){
     ];
 
     $("#cgsinfo_data").kendoGrid({
+        scrollable:false,
         toolbar:[{
             name:'create',
             text:'新增'
@@ -62,6 +63,7 @@ head.ready(function(){
     ];
 
     $("#kcxx_data").kendoGrid({
+        scrollable:false,
         dataSource:{
             data:cgsinfo_data,
             schema: {

@@ -24,6 +24,7 @@ head.ready(function(){
     ];
 
     $("#cabin_data").kendoGrid({
+        scrollable:false,
         toolbar:[{
             name:'create',
             text:'新增'
@@ -65,6 +66,7 @@ head.ready(function(){
     ];
 
     $("#kcxx_data").kendoGrid({
+        scrollable:false,
         toolbar:[{
             name:'create',
             text:'新增'

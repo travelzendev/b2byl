@@ -811,9 +811,17 @@ fieldset {
   width: 100%;
   overflow: hidden !important; }
 
-.content a:hover {
-  text-decoration: none;
+.content a {
   color: #36c; }
+
+.content .deskindex_wrap a {
+  color: #36c; }
+
+.content ul.n_1 a {
+  color: #36c !important; }
+
+h5 {
+  font-size: 12px; }
 
 .block {
   margin-bottom: 10px; }
@@ -824,13 +832,13 @@ fieldset {
 .mo-cgs1, .mo-yys1 {
   min-height: 500px; }
   .mo-cgs1 .deskindex_wrap, .mo-yys1 .deskindex_wrap {
-    padding-left: 200px;
+    padding-left: 410px;
     padding-right: 0; }
   .mo-cgs1 .col1, .mo-yys1 .col1 {
     position: absolute;
     left: 0;
     top: 0;
-    width: 190px;
+    width: 400px;
     margin-right: 15px; }
     .mo-cgs1 .col1 li, .mo-yys1 .col1 li {
       line-height: 20px;
@@ -841,16 +849,37 @@ fieldset {
   width: 800px; }
 
 .quick-date {
-  margin-bottom: 10px; }
+  margin-bottom: 10px;
+  line-height: 24px; }
+  .quick-date .prev {
+    display: block;
+    background: url(../img/prev.png) 50% 50% no-repeat;
+    width: 30px;
+    height: 100px;
+    float: left; }
+  .quick-date .next {
+    float: left;
+    display: block;
+    background: url(../img/next.png) 50% 50% no-repeat;
+    width: 30px;
+    height: 100px; }
   .quick-date .col {
+    font-size: 14px;
+    color: #333 !important;
+    cursor: pointer;
     display: block;
     color: #36c;
-    width: 100px;
+    width: 200px;
     text-align: center;
+    margin-left: 10px;
     margin-right: 10px;
     padding: 10px;
     background-color: #e3f1fb;
     border: 1px solid #a6cce6; }
+    .quick-date .col:hover {
+      border-color: #aaa;
+      background: #eee;
+      text-decoration: none; }
 
 .maincontent {
   position: relative;
@@ -861,15 +890,14 @@ fieldset {
   padding: 20px; }
   .ylinfo .thumb {
     float: left;
-    width: 600px; }
+    width: 420px; }
     .ylinfo .thumb img {
-      width: 570px;
-      height: 330px; }
+      width: 400px;
+      height: 320px; }
   .ylinfo .detail {
-    margin-left: 600px; }
+    margin-left: 430px; }
   .ylinfo .price {
-    float: right;
-    font-size: 1.4em; }
+    float: right; }
   .ylinfo .title {
     margin-bottom: 20px;
     color: #36c;
@@ -883,6 +911,7 @@ fieldset {
   .ylinfo dd {
     margin: 0; }
   .ylinfo dt {
+    border-bottom: 1px dotted #aaa;
     font-weight: bold; }
   .ylinfo .row1 {
     margin-bottom: 10px; }
@@ -899,29 +928,49 @@ fieldset {
   left: 820px;
   width: 150px;
   position: absolute; }
+  .total-block h3 {
+    background: #ddd;
+    margin: 0;
+    padding: 5px; }
+  .total-block p {
+    padding: 10px; }
 
-.quicksel a {
-  white-space: nowrap; }
-.quicksel h5 {
-  font-weight: normal;
-  color: #36c;
-  border-bottom: 1px solid #36c;
-  text-indent: 5px; }
-.quicksel li {
-  line-height: 24px;
-  padding: 10px; }
-.quicksel p {
-  padding: 5px; }
+.total-fixed {
+  top: 105px;
+  left: 1006px;
+  width: 150px;
+  position: fixed; }
+
+.quicksel {
+  height: 281px;
+  border: 2px solid #f90;
+  font-size: 14px; }
+  .quicksel a {
+    white-space: nowrap;
+    color: #333 !important;
+    margin-right: 15px; }
+  .quicksel h5 {
+    font-size: 14px;
+    font-weight: normal;
+    color: #36c;
+    border-bottom: 1px solid #36c;
+    text-indent: 5px; }
+  .quicksel li {
+    line-height: 24px;
+    padding: 10px; }
+  .quicksel p {
+    padding: 5px; }
 
 .orderno {
   color: #c63;
   font: italic bold 14px arial; }
 
 .price {
-  color: #c00; }
+  font-size: 1.4em;
+  color: #FF7A17; }
   .price b {
     font-weight: bold;
-    font-size: 1.4em; }
+    font-size: 1.5em; }
 
 .recommendlist li {
   overflow: hidden;
@@ -960,7 +1009,7 @@ fieldset {
     background-color: #fff; }
 
 .block-head .pagination {
-  width: 200px;
+  width: 300px;
   margin: 0;
   float: right; }
 
@@ -994,6 +1043,9 @@ fieldset {
   width: 75px; }
 
 .result-block .detail_link {
+  position: absolute;
+  right: 20px;
+  bottom: 40px;
   background-color: #36c;
   color: #fff !important;
   padding: 5px 10px;
@@ -1009,12 +1061,12 @@ fieldset {
   overflow: hidden;
   _zoom: 1;
   margin-bottom: 10px; }
+.result-block .row2, .result-block .row3 {
+  padding-right: 100px; }
 .result-block .title {
   color: #36c;
+  font-weight: bold;
   font-size: 16px; }
-  .result-block .title:hover {
-    color: #000;
-    text-decoration: none; }
 .result-block .dates {
   color: #666; }
 .result-block .button {
@@ -1022,16 +1074,16 @@ fieldset {
 .result-block .note {
   color: #ff9900; }
 .result-block .price {
-  font-size: 16px;
-  float: right; }
-  .result-block .price b {
-    font-size: 16px; }
+  position: absolute;
+  bottom: 90px;
+  right: 20px; }
 .result-block .thumb {
   float: left;
   width: 180px; }
 .result-block .detail {
   margin-left: 180px; }
 .result-block li {
+  position: relative;
   float: left;
   border-bottom: 1px dashed #cecece;
   padding: 20px; }
@@ -1042,7 +1094,7 @@ fieldset {
   display: block;
   line-height: 20px;
   text-align: center;
-  width: 100px;
+  width: 75px;
   color: #fff; }
 .result-block .label1 {
   background-color: #ff9900; }
@@ -1062,6 +1114,14 @@ fieldset {
 
 #psr_amount {
   padding: 10px; }
+  #psr_amount .note {
+    line-height: 24px;
+    color: #999; }
+  #psr_amount input {
+    font-size: 18px;
+    font-weight: bold; }
+  #psr_amount .k-select {
+    margin-top: 5px; }
 
 #yl_detail_info {
   border-top: 0;
@@ -1266,3 +1326,39 @@ fieldset {
 
 .readonly {
   border: 0 !important; }
+
+.k-i-close {
+  background: url(../img/cc.gif) 0 0 no-repeat !important; }
+
+.k-edit-form-container {
+  text-align: center; }
+
+.k-edit-label {
+  text-align: right !important; }
+
+.k-edit-field {
+  text-align: left !important; }
+
+.k-window-title {
+  display: none; }
+
+.mo-cgs2 .table-b3, .mo-cgs2 .table-b4 {
+  color: #888; }
+  .mo-cgs2 .table-b3 td, .mo-cgs2 .table-b4 td, .mo-cgs2 .table-b3 th, .mo-cgs2 .table-b4 th {
+    border: 0; }
+.mo-cgs2 .table-b3 th, .mo-cgs2 .table-b4 th {
+  text-align: right; }
+
+.pagination a {
+  padding: 10px; }
+
+.k-dirty {
+  display: none; }
+
+.mo-cgs3 .k-grouping-row td, .mo-cgs3 .k-grouping-row th {
+  background-color: #e3f1fb;
+  border-bottom: 1px solid #ddd;
+  font-weight: bold; }
+
+#yl_detail_info td, #yl_detail_info th {
+  border-bottom: 1px solid #ccc; }

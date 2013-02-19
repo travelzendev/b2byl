@@ -13,6 +13,7 @@ head.ready(function(){
     $('.datepicker').kendoDatePicker();
 
     $("#statistics_data").kendoGrid({
+        scrollable:false,
         dataSource:{
             data:statistics_data,
             schema: {

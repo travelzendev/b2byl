@@ -24,6 +24,7 @@ head.ready(function(){
     ];
 
     $("#line_info").kendoGrid({
+        scrollable:false,
         dataSource:{
             data:submited.line_info,
             schema: {
@@ -74,6 +75,7 @@ head.ready(function(){
     ];
 
     $("#room_info").kendoGrid({
+        scrollable:false,
         dataSource: submited.room_info,
         columns:cols,
         // groupable: true,
@@ -97,6 +99,7 @@ head.ready(function(){
 
 
     $('#others_info').kendoGrid({
+        scrollable:false,
         dataSource: submited.others_info,
         columns:cols3,
     });

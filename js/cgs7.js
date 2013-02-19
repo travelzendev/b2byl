@@ -88,6 +88,7 @@ head.ready(function(){
     ];
 
     $("#order_grid").kendoGrid({
+        scrollable:false,
         dataSource:{
             data:order_info,
             schema: {

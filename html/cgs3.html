@@ -163,29 +163,38 @@
             </a>
             <a href="#" class="next"></a>
           </div>
-          <div class="block" id="psr_amount">
-              <p>
-                <label for="adt_amount">
-                  成人： 
-<input class="numerictextbox"  data-min="1" data-bind="value:line_info.adt_amount" type="number" />
-人
-                </label>
-                &nbsp;&nbsp;&nbsp;
-                <label for="">
-                  儿童： 
-<input class="numerictextbox"  data-min="0" data-bind="value:line_info.chd_amount" type="number" />
-人
-                </label>
-                <!-- <input type="button" class="button button6" value="修改" /> -->
-              </p>
-              <p>
-                <span class="note">
-                  最少成行：1人， 儿童为：6个月——12个月
-                </span> 
-              </p>
-          </div>
+          
           <div class="block">
-            <div id="yl_detail_info" data-bind="source:detail_info"> </div>
+            <div id="yl_detail_info" class="k-grid k-widget">
+           <table>
+<thead class="k-grid-header"><tr><th role="columnheader" data-field="cabin" data-title="舱型" class="k-header">舱型</th><th role="columnheader" data-field="room" data-title="房型" class="k-header">房型</th><th role="columnheader" data-field="floor" data-title="楼层" class="k-header">楼层</th><th role="columnheader" data-field="acreage" data-title="面积（m2）" class="k-header">面积（m2）</th><th role="columnheader" data-field="windows" data-title="窗户" class="k-header">窗户</th><th role="columnheader" data-field="bed" data-title="床型" class="k-header">床型</th><th role="columnheader" data-field="price" data-title="价格/人" class="k-header">价格/人</th><th role="columnheader" data-field="max" data-title="可入住人数" class="k-header">可入住人数</th><th role="columnheader" data-field="real" data-title="实际入住人数" class="k-header">实际入住人数</th><th role="columnheader" data-field="roomcount" data-title="房间数" class="k-header">房间数</th><th role="columnheader" data-field="selected" data-title="选择" class="k-header">选择</th></tr></thead>
+
+<tbody data-template="yl_detail_info_row" data-bind="source: room_info">
+
+</tbody>
+           </table> 
+            </div>
+<script id="yl_detail_info_row" type="text/template">
+<tr>
+  <td data-bind="text:cabin"></td>
+  <td data-bind="text:room"></td>
+  <td data-bind="text:floor"></td>
+  <td data-bind="text:acreage"></td>
+  <td data-bind="text:windows"></td>
+  <td data-bind="text:bed"></td>
+  <td data-bind="text:price"></td>
+  <td data-bind="text:max"></td>
+  <td>
+    <input data-role="numerictextbox" style="width:60px" data-min="1" data-max="#= max #" data-format="\#" data-bind="value: real" />
+  </td>
+  <td>
+    <input data-role="numerictextbox" style="width:60px" data-min="1" data-format="\#" data-bind="value: roomcount" />
+  </td>
+  <td>
+    <input type="checkbox" data-bind="checked:selected" />  
+  </td>
+</tr>
+</script>
             <center style="background-color:#eee;padding:10px">
             请注意：入住的第3人和第4人的床位可能是下拉或者沙发。
             </center>
@@ -197,15 +206,10 @@
               <textarea id="remark" name="" data-bind="value:additional_info.remark" rows="10" cols="30"></textarea> 
             </p>
           </div>
-          <center>
-            <a href="cgs2.html" class="button button2">上一步</a>
+          <center class="clearfix">
+            <a href="cgs2.html" style="float:left;">&laquo;返回上一步</a>
               <input type="submit" class="button button2" id="submit" value="预订" /> 
           </center>
-          <div>
-            1.无票的房型自动隐藏。<br>
-            2.票量>=5张，显示为充足；1~4张红字显示为：余X张；0张显示为：已售完<br>
-3.成人保险与儿童保险的数量默认与人数相同.
-          </div>
         </div>
         <div class="total-block clearfix block">
           <h3>总价</h3> 

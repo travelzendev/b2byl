@@ -24,6 +24,7 @@ head.ready(function(){
     ];
 
     $("#cabin_data").kendoGrid({
+        scrollable:false,
         toolbar:[{
             name:'create',
             text:'新增'
@@ -58,7 +59,7 @@ head.ready(function(){
         {field:"departure_city",title:"上船"},
         {field:"arrival_city",title:"下船"},
         {field:"id",title:"行程维护",template:'<a href="yys9.html?id=${id}">进入</a>'},
-        {title:"航次维护",template:'<a href="yys10.html?id=${id}">进入</a>'},
+        {field:'id',title:"航次维护",template:'<a href="yys10.html?id=${id}">进入</a>'},
         {field:'published',title:"状态",template:'#= kendo.toString(published?"已发布":"未发布") #'},
         {title:"编辑",width:'160px',command: [{
             name:'edit',
@@ -71,6 +72,7 @@ head.ready(function(){
     ];
 
     $("#line_data").kendoGrid({
+        scrollable:false,
         toolbar:[{
             name:'create',
             text:'新增'
@@ -80,9 +82,8 @@ head.ready(function(){
             schema: {
                 model:{
                     fields:{
-                        name:{type:'text'},
-                        moban:{type:'text'},
-                        yangtu:{type:'text'},
+                        id:{editable:false},
+                        published:{editable:false}
                     }
                 }
             }

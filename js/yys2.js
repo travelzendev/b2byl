@@ -20,6 +20,7 @@ head.ready(function(){
     ];
 
     $("#stzl_data").kendoGrid({
+        scrollable:false,
         toolbar:[{
             name:'create',
             text:'新增'

@@ -14,6 +14,7 @@ head.ready(function(){
     ];
 
     $("#company_data").kendoGrid({
+        scrollable:false,
         toolbar:[{
             name:'create',
             text:'新增'

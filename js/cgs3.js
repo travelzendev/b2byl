@@ -1,6 +1,17 @@
 head.ready(function(){
     store.clear();
 
+    $(window).bind('scroll',function(){
+        var that=$(this);
+        var postop = that.scrollTop();
+        var ele = $('.total-block');
+        if(postop>563){
+            !ele.hasClass('total-fixed') && ele.addClass('total-fixed');
+        }else{
+            ele.removeClass('total-fixed');
+        };
+    });
+
     $('.numerictextbox').kendoNumericTextBox({
         format:"#"
     });
@@ -18,6 +29,7 @@ head.ready(function(){
     ];
 
     $("#yl_detail_calc").kendoGrid({
+        scrollable:false,
         dataSource:{
             data:cgs_data.others_info,
             schema: {
@@ -42,87 +54,9 @@ head.ready(function(){
         // },
     });
 
-    var cols =  [
-        {
-        field: "cabin",
-        title: "舱型",
-    },
-    {
-        field: "room",
-        title:"房型",
-    },
-    {
-        field: "floor",
-        title:"楼层",
-    },
-    {
-        field: "acreage",
-        title:"面积（m2）",
-    },
-    {
-        field: "windows",
-        title:"窗户",
-    },
-    {
-        field: "bed",
-        title:"床型",
-    },
-    {
-        field: "price",
-        title:"价格/人",
-    },
-    {
-        field: "max",
-        title:"可入住人数",
-    },
-    {
-        field: "real",
-        title:"实际入住人数",
-        template: "<span class='pseudo_input'>${real}</span>",
-    },
-    {
-        field: "roomcount",
-        title:"房间数",
-        template: "<span class='pseudo_input'>${roomcount}</span>"
-    },
-    {
-        field: "selected",
-        width: 40,
-        title:"选择",
-        template: "${selected}"
-    }];
+    // var iyl_detail_info = kendo.template($('#yl_detail_info_row').html(),{useWithBlock:false});
 
-    $("#yl_detail_info").kendoGrid({
-        dataSource:{
-            data:cgs_data.room_info,
-            group: { field: "cabin" },
-            schema: {
-                model:{
-                    fields:{
-                        cabin:{editable:false},
-                        floor:{editable:false},
-                        acreage:{editable:false},
-                        windows:{editable:false},
-                        bed:{editable:false},
-                        price:{editable:false},
-                        max:{editable:false},
-                        real:{editable:true,type:"number",validation:{min:0}},
-                        roomcount:{editable:true,type:"number",validation:{min:0}},
-                        selected:{type:'boolean'}
-                    }
-                }
-            }
-            // pagesize:10
-        },
-        columns:cols,
-        editable:true,
-        // groupable: true,
-        // sortable: true,
-        // pageable: {
-        //     refresh: true,
-        //     pageSizes: true
-        // },
-    });
+    // $('#yl_detail_info table').append(iyl_detail_info(cgs_data.room_info));
 
     var viewModel = kendo.observable(cgs_data);
     kendo.bind($(".content"), viewModel);
@@ -138,8 +72,8 @@ head.ready(function(){
 
         store.set('cgs_submited_data', submited);
 
-        location.href="cgs5.html";
-        // console.log(submited);
+        // location.href="cgs5.html";
+        console.log(submited);
     });
 
 });

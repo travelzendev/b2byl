@@ -17,6 +17,7 @@ head.ready(function(){
     ];
 
     $("#jcxx_data").kendoGrid({
+        scrollable:false,
         toolbar:[{
             name:'create',
             text:'新增'

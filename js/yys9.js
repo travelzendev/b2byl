@@ -18,6 +18,7 @@ head.ready(function(){
     ];
 
     $("#agenda_data").kendoGrid({
+        scrollable:false,
         toolbar:[{
             name:'create',
             text:'新增'
@@ -27,9 +28,7 @@ head.ready(function(){
             schema: {
                 model:{
                     fields:{
-                        name:{type:'text'},
-                        moban:{type:'text'},
-                        yangtu:{type:'text'},
+                        picture:{editable:false},
                     }
                 }
             }

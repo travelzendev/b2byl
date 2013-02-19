@@ -252,7 +252,7 @@ $(function(){
             total:0,
         },
         line_info:{
-            adt_amount:1,
+            adt_amount:2,
             chd_amount:0,
             line_name:'"歌诗达维多利亚号"新加坡、马来西亚豪华畅游6日游',
             departure_date:'2012-10-10',
@@ -274,8 +274,8 @@ $(function(){
             price:5200,
             max:2,
             real:2,
-            roomcount:2,
-            selected:false
+            roomcount:1,
+            selected:true
         },{
             cabin:'内舱房',
             room:'标准2',
@@ -288,22 +288,8 @@ $(function(){
             price:5600,
             max:2,
             real:2,
-            roomcount:2,
+            roomcount:1,
             selected:false
-        },{
-            cabin:'内舱房',
-            room:'标准2',
-            room_id:'222',
-            room_intro:'设备介绍：浴室，电锤，电话，电视',
-            floor:'5~7层',
-            acreage:'6.6~9.0',
-            windows:'无',
-            bed:'双床',
-            price:9600,
-            max:2,
-            real:2,
-            roomcount:2,
-            selected:true
         }],
         others_info:[
             {name:'成人保险',price:124,count:1},

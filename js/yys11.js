@@ -19,6 +19,7 @@ head.ready(function(){
     ];
 
     $("#cabin_price_data").kendoGrid({
+        scrollable:false,
         dataSource:{
             data:cabin_price_data,
             schema: {
