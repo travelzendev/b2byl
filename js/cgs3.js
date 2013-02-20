@@ -1,6 +1,21 @@
 head.ready(function(){
     store.clear();
 
+    $('.fximg').ezpz_tooltip();
+
+    window.add_room = function(){
+
+    }
+
+    window.room_count_change = function(e){
+        var that = e.sender;
+        console.log(that);
+    }
+
+    window.delete_room = function(){
+
+    }
+
     $(window).bind('scroll',function(){
         var that=$(this);
         var postop = that.scrollTop();
@@ -61,9 +76,15 @@ head.ready(function(){
     var viewModel = kendo.observable(cgs_data);
     kendo.bind($(".content"), viewModel);
 
+    $('.fximg').ezpz_tooltip();
+
     viewModel.bind('change',function(e){
         // console.log(e);
     });
+
+    // $('body').delegate('.roomcounttd .k-link','click',function(){
+        // console.log(viewModel);
+    // });
 
     $('#submit').bind('click',function(e){
         e.preventDefault();

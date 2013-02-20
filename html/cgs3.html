@@ -136,8 +136,8 @@
           </div>
         </div>
       </div> 
-      <div class="maincontent">
-        <div class="content-col">
+      <div class="maincontent clearfix">
+        <div class="content-col" style="float:left;">
           <div class="quick-date clearfix">
             <a href="#" class="prev"></a>
             <a class="col">
@@ -164,20 +164,42 @@
             <a href="#" class="next"></a>
           </div>
           
-          <div class="block">
-            <div id="yl_detail_info" class="k-grid k-widget">
-           <table>
-<thead class="k-grid-header"><tr><th role="columnheader" data-field="cabin" data-title="舱型" class="k-header">舱型</th><th role="columnheader" data-field="room" data-title="房型" class="k-header">房型</th><th role="columnheader" data-field="floor" data-title="楼层" class="k-header">楼层</th><th role="columnheader" data-field="acreage" data-title="面积（m2）" class="k-header">面积（m2）</th><th role="columnheader" data-field="windows" data-title="窗户" class="k-header">窗户</th><th role="columnheader" data-field="bed" data-title="床型" class="k-header">床型</th><th role="columnheader" data-field="price" data-title="价格/人" class="k-header">价格/人</th><th role="columnheader" data-field="max" data-title="可入住人数" class="k-header">可入住人数</th><th role="columnheader" data-field="real" data-title="实际入住人数" class="k-header">实际入住人数</th><th role="columnheader" data-field="roomcount" data-title="房间数" class="k-header">房间数</th><th role="columnheader" data-field="selected" data-title="选择" class="k-header">选择</th></tr></thead>
-
-<tbody data-template="yl_detail_info_row" data-bind="source: room_info">
-
+          <div class="block" style="border:none;">
+            <div id="yl_detail_info">
+           <table class="table-b2" style="border:1px solid #ccc;">
+<thead class="thead"><tr><th>房型</th><th>楼层</th><th>面积（m2）</th><th>窗户</th><th>床型</th><th>价格/人</th><th>可入住人数</th><th>实际入住人数</th><th>房间数</th><th>选择</th></tr></thead>
+<thead>
+  <tr class="fxtype">
+    <th colspan="10">舱型:
+      <span data-bind="source: room_info[0].cabin_type"></span> 
+    </th>
+  </tr>
+</thead>
+<tbody data-template="yl_detail_info_row" data-bind="source: room_info[0].room_type">
+</tbody>
+<thead>
+  <tr class="fxtype">
+    <th colspan="10">舱型:
+      <span data-bind="source: room_info[1].cabin_type"></span> 
+    </th>
+  </tr>
+</thead>
+<tbody data-template="yl_detail_info_row" data-bind="source: room_info[1].room_type">
 </tbody>
            </table> 
             </div>
 <script id="yl_detail_info_row" type="text/template">
 <tr>
-  <td data-bind="text:cabin"></td>
-  <td data-bind="text:room"></td>
+  <td>
+    <a href="\#imgurl" class="fximg" data-bind="text:room" id="#= 'room-target-'+room_number #"></a> 
+    <div style="display:none;" class="fxdetail" id="#= 'room-content-'+room_number #">
+      <p>
+        <img src="" data-bind="attr: { src: room_img}" alt="" /> 
+      </p> 
+        <h4 class="orange" data-bind="text:cabin"></h4> 
+        <p data-bind="text:room_intro"></p>
+    </div>
+  </td>
   <td data-bind="text:floor"></td>
   <td data-bind="text:acreage"></td>
   <td data-bind="text:windows"></td>
@@ -185,13 +207,13 @@
   <td data-bind="text:price"></td>
   <td data-bind="text:max"></td>
   <td>
-    <input data-role="numerictextbox" style="width:60px" data-min="1" data-max="#= max #" data-format="\#" data-bind="value: real" />
+    <input data-role="numerictextbox" style="width:60px" data-min="0" data-max="#= max #" data-format="\#" data-bind="value: real" />
+  </td>
+  <td class="roomcounttd">
+    <input data-role="numerictextbox" data-spin="room_count_change" style="width:60px" data-min="0" data-format="\#" data-bind="value: roomcount" />
   </td>
   <td>
-    <input data-role="numerictextbox" style="width:60px" data-min="1" data-format="\#" data-bind="value: roomcount" />
-  </td>
-  <td>
-    <input type="checkbox" data-bind="checked:selected" />  
+    <input type="checkbox" disabled />  
   </td>
 </tr>
 </script>

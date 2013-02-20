@@ -882,7 +882,6 @@ h5 {
       text-decoration: none; }
 
 .maincontent {
-  position: relative;
   margin-top: 10px; }
 
 .ylinfo {
@@ -924,10 +923,9 @@ h5 {
         background: #39f; }
 
 .total-block {
-  top: 10px;
-  left: 820px;
+  float: left;
   width: 150px;
-  position: absolute; }
+  margin-left: 20px; }
   .total-block h3 {
     background: #ddd;
     margin: 0;
@@ -938,8 +936,8 @@ h5 {
 .total-fixed {
   top: 105px;
   left: 1006px;
-  width: 150px;
-  position: fixed; }
+  position: fixed;
+  margin-left: 0px; }
 
 .quicksel {
   height: 281px;
@@ -1362,3 +1360,20 @@ h5 {
 
 #yl_detail_info td, #yl_detail_info th {
   border-bottom: 1px solid #ccc; }
+
+.fximg {
+  padding-left: 20px;
+  background: url(../img/u192_normal.png) no-repeat 0 50%; }
+
+.fxdetail {
+  display: none;
+  /* required */
+  position: absolute;
+  /* required */
+  padding: 10px;
+  border: 1px solid black;
+  background-color: white;
+  z-index: 999999; }
+
+.fxtype {
+  background-color: #ddd; }

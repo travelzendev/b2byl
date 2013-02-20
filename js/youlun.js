@@ -3,6 +3,7 @@ $(function(){
             '../js/kendo.culture.zh-CHS.min.js',
             '../js/store.min.js',
             '../js/json2.min.js',
+            '../js/jquery.ezpz_tooltip.min.js',
   function(){
     kendo.culture('zh-CHS');
 
@@ -262,34 +263,45 @@ $(function(){
             cruise_name:'N250',
             cruise_id:'N250',
         },
-        room_info:[{
-            cabin:'海景房',
+        room_info:[
+            {
+                cabin_type:'内舱房',
+                room_left_count:'100',
+                room_min_price:'2500',
+                room_type:[{
+                cabin:'内舱房',
             room:'标准1',
-            room_id:'1',
-            room_intro:'设备介绍：浴室，电锤，电话，电视',
+            room_img:'http://203.156.242.106:8082/file/picture/135546375106254b15e0b-16e7-41c8-b72f-fac44bb20b1b.jpg',
+            room_number:'2222',
+            room_intro:'设备介绍：浴室，电锤，电话',
             floor:'5~7层',
             acreage:'6.6~9.0',
             windows:'无',
             bed:'双床',
-            price:5200,
+            price:9999,
             max:2,
             real:2,
-            roomcount:1,
-            selected:true
+            roomcount:0,
+        }]
         },{
-            cabin:'内舱房',
-            room:'标准2',
-            room_id:'2',
+                cabin_type:'海景房',
+                room_left_count:'100',
+                room_min_price:'2500',
+                room_type:[{
+                cabin:'海景房',
+            room:'标准4',
+            room_img:'http://203.156.242.106:8082/file/picture/135546375106254b15e0b-16e7-41c8-b72f-fac44bb20b1b.jpg',
+            room_number:'d992222',
             room_intro:'设备介绍：浴室，电锤，电话，电视',
             floor:'5~7层',
             acreage:'6.6~9.0',
             windows:'无',
             bed:'双床',
-            price:5600,
+            price:5000,
             max:2,
             real:2,
-            roomcount:1,
-            selected:false
+            roomcount:0,
+        }]
         }],
         others_info:[
             {name:'成人保险',price:124,count:1},
