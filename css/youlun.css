@@ -1377,3 +1377,11 @@ h5 {
 
 .fxtype {
   background-color: #ddd; }
+
+.icon-search {
+  display: block;
+  width: 24px;
+  padding-left: 16px;
+  height: 14px;
+  background: url(../img/search.png) no-repeat 0 50%;
+  cursor: pointer; }
