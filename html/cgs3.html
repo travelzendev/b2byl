@@ -89,6 +89,7 @@
   <div class="breadcrumb">
     <span><i class="icon icon3"></i>当前位置： <a href="cgs1.html">邮轮</a> &gt; 邮轮详情</span>
   </div>
+
   <div class="content area">
     <div class="mo-cgs3 clearfix">
       <div class="xblock steps">
@@ -167,88 +168,10 @@
           <div class="block" style="border:none;">
             <div id="yl_detail_info">
            <table class="table-b2" style="border:1px solid #ccc;">
-             <thead class="thead"><tr><th>房型</th><th>楼层</th><th>面积（m2）</th><th>窗户</th><th>床型</th><th>价格/人</th><th>可入住人数</th><th>实际入住人数</th><th>房间数</th><th width="60">房间号</th><th>选择</th></tr></thead>
-<thead>
-  <tr class="fxtype">
-    <th colspan="11">舱型:
-      <span data-bind="source: room_info[0].cabin_type"></span> 
-    </th>
-  </tr>
-</thead>
-<tbody data-template="yl_detail_info_row" class="fxwrap" data-bind="source: room_info[0].room_type">
-</tbody>
-<thead>
-  <tr class="fxtype">
-    <th colspan="11">舱型:
-      <span data-bind="source: room_info[1].cabin_type"></span> 
-    </th>
-  </tr>
-</thead>
-<tbody data-template="yl_detail_info_row" class="fxwrap" data-bind="source: room_info[1].room_type">
-</tbody>
+             <thead class="thead"><tr><th>房型</th><th>楼层</th><th>面积（m2）</th><th>窗户</th><th>床型</th><th>价格/人</th><th>可入住人数</th><th>实际入住人数</th><th>房间数</th><th width="60">房间号</th><th width="80">选择</th></tr></thead>
            </table> 
             </div>
 
-<script id="yl_detail_added_row" type="text/template">
-<tr class="fxaddedrow fxrow-#= cuid #">
-<td colspan="7"></td>
-<td colspan="2"><input data-role="numerictextbox" value="2" style="width:60px" data-min="0" data-max="#= max #" data-format="\\#" data-spin="vvvv" /></td>
-<td>
-    #if(order[order.length-1].room_number==='随机'){# 
-    #= '随机' #
-    #}#
-
-    #if(order[order.length-1].room_number==='可选房号'){# 
-    #= '<span class="icon-search">选房</span>' #
-    #}#
-</td>
-<td><input class="fxaction" type="checkbox" checked /></td>
-</tr>
-</script>
-
-<script id="yl_detail_info_row" type="text/template">
-  # data.cuid=data.uid.replace(/\W/g,'') #
-<tr class="fxdatarow fxrow-#= data.cuid #">
-  <td>
-    <a href="\#imgurl" class="fximg" data-bind="text:room" id="#= 'room-target-'+data.cuid #"></a> 
-    <div style="display:none;" class="fxdetail" id="#= 'room-content-'+data.cuid #">
-      <p>
-        <img src="" data-bind="attr: { src: room_img}" alt="" /> 
-      </p> 
-        <h4 class="orange">#= data.parent().parent().cabin_type #</h4> 
-        <p data-bind="text:room_intro"></p>
-    </div>
-  </td>
-  <td data-bind="text:floor"></td>
-  <td data-bind="text:acreage"></td>
-  <td data-bind="text:windows"></td>
-  <td data-bind="text:bed"></td>
-  <td data-bind="text:price"></td>
-  <td data-bind="text:max"></td>
-  <td>
-    <div class="fxhide" style="display:none">
-    <input data-role="numerictextbox" class="fxreal" style="width:60px" data-min="0" data-max="#= max #" data-format="\#" data-bind="value: order[0].real" />
-    </div>
-  </td>
-  <td class="roomcounttd">
-    <input data-role="numerictextbox" class="fxroomcount" data-cuid="#= data.cuid #" data-spin="room_count_change" style="width:60px" data-min="0" data-format="\#" data-bind="value: roomcount" />
-  </td>
-  <td class="fxroomnubmer">
-    <div class="fxhide" style="display:none">
-    #if(order[0].room_number==='随机'){# 
-    #= '随机' #
-    #}#
-
-    #if(order[0].room_number==='可选房号'){# 
-    #= '<span class="icon-search">选房</span>' #
-    #}#
-    </div>
-  </td>
-  <td>
-    <input class="fxaction" type="checkbox" disabled />  
-  </td>
-</tr>
-</script>
             <center style="background-color:#eee;padding:10px">
             请注意：入住的第3人和第4人的床位可能是下拉或者沙发。
             </center>
@@ -274,6 +197,74 @@
   </div>
 </div>
 <i class="toggle-arrow arrow4"></i>
+
+<script id="yl_detail_added_row" type="text/template">
+<tr class="fxaddedrow fxrow-#= cuid #" data-cuid="#= cuid #">
+<td colspan="7"></td>
+<td colspan="2"><input readonly data-role="numerictextbox" value="2" style="width:60px" data-min="0" data-max="#= max #" data-format="\\#" data-bind="value:order[#=order.length-1#].real" /></td>
+<td>
+    <span data-bind="text: order[0].room_number" class="fxroomnumber #= data.room_number_availale?'icon-search':'' #"></span>
+</td>
+<td>
+    <span class="fxhide" style="font-size:16px">\&\#10004;</span>  
+    <input type="button" class="fxaction" value="×" />
+</td>
+</tr>
+</script>
+
+<script id="yl_detail_info_row" type="text/template">
+  # data.cuid=data.uid.replace(/\W/g,'') #
+<tr class="fxdatarow fxrow-#= data.cuid #">
+  <td>
+    <a href="\#imgurl" class="fximg" data-bind="text:room" id="#= 'room-target-'+data.cuid #"></a> 
+    <div style="display:none;" class="fxdetail" id="#= 'room-content-'+data.cuid #">
+      <p>
+        <img src="" data-bind="attr: { src: room_img}" alt="" /> 
+      </p> 
+        <h4 class="orange">#= data.parent().parent().cabin_type #</h4> 
+        <p data-bind="text:room_intro"></p>
+    </div>
+  </td>
+  <td data-bind="text:floor"></td>
+  <td data-bind="text:acreage"></td>
+  <td data-bind="text:windows"></td>
+  <td data-bind="text:bed"></td>
+  <td data-bind="text:price"></td>
+  <td data-bind="text:max"></td>
+  <td>
+    <div class="fxhide" style="display:none">
+    <input readonly data-role="numerictextbox" class="fxreal" style="width:60px" data-min="0" data-max="#= max #" data-format="\#" data-bind="value: order[0].real" />
+    </div>
+  </td>
+  <td class="roomcounttd">
+    <input readonly data-role="numerictextbox" rel="888" class="fxroomcount" data-cuid="#= data.cuid #" data-spin="room_count_change" style="width:60px" data-min="0" data-format="\#" data-bind="value: roomcount" />
+  </td>
+  <td>
+    <div class="fxhide" style="display:none">
+    <span data-bind="text: order[0].room_number" class="fxroomnumber #= data.room_number_availale?'icon-search':'' #"></span>
+    </div>
+  </td>
+  <td>
+    <span class="fxhide" style="display:none;font-size:16px">\&\#10004;</span>  
+    <input type="button" class="fxaction fxhide" style="display:none" value="×" />
+  </td>
+</tr>
+</script>
+
+<script id="tbody" type="text/template">
+  # for( var i=0; i< data.len; i++ ) {  #
+<thead>
+  <tr class="fxtype">
+    <th colspan="11">舱型:
+      <span data-bind="text: room_info[#=i#].cabin_type"></span> 
+    </th>
+  </tr>
+</thead>
+<tbody data-template="yl_detail_info_row" class="fxwrap fxwrap-#=i#" data-bind="source: room_info[#=i#].room_type">
+</tbody>
+  # } #
+</script>
+
 <script type="text/javascript" src="../js/youlun.js"></script>
 </body>
 </html>

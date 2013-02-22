@@ -1,5 +1,5 @@
 $(function(){
-    head.js('../js/kendo.web.min.js',
+    head.js('../js/kendo.web.js',
             '../js/kendo.culture.zh-CHS.min.js',
             '../js/store.min.js',
             '../js/json2.min.js',
@@ -277,11 +277,7 @@ $(function(){
                             windows:'无',
                             bed:'双床',
                             price:9999,
-                            max:2,
-                            order:[{
-                                real:2,
-                                room_number:'随机'
-                            }],
+                            max:3,
                             roomcount:0,
                             room_number_availale:false
                         },{
@@ -294,10 +290,6 @@ $(function(){
                             bed:'双床',
                             price:9999,
                             max:2,
-                            order:[{
-                                real:2,
-                                room_number:'可选房号'
-                            }],
                             roomcount:0,
                             room_number_availale:true
                         }]
@@ -315,10 +307,6 @@ $(function(){
                             bed:'双床',
                             price:5000,
                             max:2,
-                            order:[{
-                                real:2,
-                                room_number:'可选房号'
-                            }],
                             roomcount:0,
                             room_number_availale:true
                         }]

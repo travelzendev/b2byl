@@ -1,22 +1,29 @@
 head.ready(function(){
     store.clear();
 
+    $('body').delegate('.icon-search','click',function(){
+        alert('此功能暂不能用');
+    });
+
     $('.fximg').ezpz_tooltip();
+
+    var tbody = kendo.template($('#tbody').html());
+    $('#yl_detail_info table').append(tbody({ len:cgs_data.room_info.length }));
 
     window.room_count_change = function(e){
         var that = e.sender;
+        var tr = that.element.closest('tr');
         var val = that._value;
         var max = that.element.data('max');
-        var ele = that.element.closest('.fxwrap');
         var cuid = that.element.data('cuid');
         var len = that.element.closest('.fxwrap').find('.fxrow-'+cuid).size();
         var tlen = that.element.closest('.fxwrap').index()/2-1;
-        var index = that.element.closest('tr').prevAll('.fxdatarow').size();
+        var index = tr.prevAll('.fxdatarow').size();
 
         var room_data = viewModel.room_info[tlen].room_type[index];
 
         if(val==0){
-            that.element.closest('tr').find('.fxhide').hide();
+            tr.find('.fxhide').hide();
             reset_room(cuid);
         }else{
             if(val<len){
@@ -24,41 +31,49 @@ head.ready(function(){
             }
 
             if(val>0){
-                that.element.closest('tr').find('.fxhide').show();
-                $('.fxrow-'+cuid).eq(0).find('.fxaction').attr('checked',true).removeAttr('disabled');
+                tr.find('.fxhide').show();
+                if ( val==1 && typeof room_data.order=='undefined') {
+                    room_data.order = new kendo.data.ObservableArray([]);
+                    var item = {real:2};
+                    if(room_data.room_number_availale){
+                        item.room_number='选房';
+                    }else{
+                        item.room_number='随机';
+                    }
+                    room_data.order.push(item);
+                    kendo.bind(tr.find('.fxreal[data-role]'),room_data);
+                    kendo.bind(tr.find('.fxroomnumber'),room_data);
+                }
             }
 
             if(val>len){
-                add_room(ele,cuid,val,room_data);
+                add_room(cuid,val,room_data);
             }
         }
 
     }
 
     function reset_room(cuid){
-        $('.fxrow-'+cuid).eq(0).find('.fxaction').attr('checked',false).attr('disabled',true);
+        $('.fxrow-'+cuid).eq(0).find('.fxhide').hide();
     }
 
-    function add_room(ele,cuid,val,room_data){
+    function add_room(cuid,val,room_data){
         var item = {real:2};
         if(room_data.room_number_availale){
-             item.room_number='可选房号';
+            item.room_number='选房';
         }else{
-             item.room_number='随机';
+            item.room_number='随机';
         }
+
         room_data.order.push(item);
 
         var html = $('#yl_detail_added_row').html();
-
-        window.vvvv = function(e){
-            var that = e.sender;
-            var index = that.element.closest('tr').prevUntil('.fxdatarow').size()+1;
-            room_data.order[index].real = that._value;
-        }
-
         var tpl = kendo.template(html);
-        $('.fxrow-'+cuid).eq(-1).after(tpl(room_data));
-        kendo.init(ele);
+
+        var last = $('.fxrow-'+cuid).eq(-1).after(tpl(room_data));
+        kendo.init($('.fxrow-'+cuid).eq(-1));
+
+        kendo.bind($(".fxaddedrow.fxrow-"+cuid), room_data);
     }
 
     function delete_room(cuid,room_data){
@@ -66,26 +81,36 @@ head.ready(function(){
         room_data.order.pop();
     }
 
-    $('#yl_detail_info').delegate('.fxaction','change',function(e){
+    $('#yl_detail_info').delegate('.fxaction','click',function(e){
         var that = $(this);
         var tr = that.closest('tr');
+        var cuid = that.data('cuid');
         var fxdatarow = $('.fxdatarow').eq(tr.prevAll('.fxdatarow').size()-1);
-        if(tr.hasClass('fxdatarow')==false){
-            tr.remove();
-        }
-        var fxroomcount = fxdatarow.find('input.fxroomcount[data-role]').data("kendoNumericTextBox");
-        fxroomcount.value(fxroomcount._value-1);
-    });
+        var room_index = tr.prevUntil('.fxdatarow').size()+1;
+        var tlen = tr.closest('.fxwrap').index()/2-1;
+        var index = tr.prevAll('.fxdatarow').size();
+        index = tr.hasClass('fxdatarow')?index:index-1;
 
-    $(window).bind('scroll',function(){
-        var that=$(this);
-        var postop = that.scrollTop();
-        var ele = $('.total-block');
-        if(postop>563){
-            !ele.hasClass('total-fixed') && ele.addClass('total-fixed');
+        var room_data = viewModel.room_info[tlen].room_type[index];
+
+        if(tr.hasClass('fxdatarow')==false){
+            room_data.order.splice(room_index,1);
+            tr.remove();
         }else{
-            ele.removeClass('total-fixed');
-        };
+            room_data.order.splice(0,1);
+            kendo.bind(tr.find('.fxreal[data-role]'),room_data);
+            kendo.bind(tr.find('.fxroomnumber'),room_data);
+            kendo.bind($(".fxaddedrow.fxrow-"+cuid), room_data);
+            tr.next().remove();
+        }
+
+        if(room_data.order.length==0){
+            delete room_data.order;
+            tr.find('.fxhide').hide();
+            reset_room(cuid);
+        }
+
+        room_data.set('roomcount',room_data.roomcount-1);
     });
 
     $('.numerictextbox').kendoNumericTextBox({
@@ -131,32 +156,35 @@ head.ready(function(){
         // },
     });
 
-    // var iyl_detail_info = kendo.template($('#yl_detail_info_row').html(),{useWithBlock:false});
-
-    // $('#yl_detail_info table').append(iyl_detail_info(cgs_data.room_info));
-
     var viewModel = kendo.observable(cgs_data);
     kendo.bind($(".content"), viewModel);
-
-    $('.fximg').ezpz_tooltip();
 
     viewModel.bind('change',function(e){
         // console.log(e);
     });
 
-    // $('body').delegate('.roomcounttd .k-link','click',function(){
-        // console.log(viewModel);
-    // });
-
     $('#submit').bind('click',function(e){
         e.preventDefault();
         //存储在本地，不提交
-       var submited = viewModel.toJSON();
+        var submited = viewModel.toJSON();
 
         store.set('cgs_submited_data', submited);
 
         // location.href="cgs5.html";
         console.log(submited);
+    });
+
+    $('.fximg').ezpz_tooltip();
+
+    $(window).bind('scroll',function(){
+        var that=$(this);
+        var postop = that.scrollTop();
+        var ele = $('.total-block');
+        if(postop>563){
+            !ele.hasClass('total-fixed') && ele.addClass('total-fixed');
+        }else{
+            ele.removeClass('total-fixed');
+        };
     });
 
 });
