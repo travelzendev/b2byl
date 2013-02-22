@@ -1,5 +1,5 @@
 $(function(){
-    head.js('../js/kendo.web.js',
+    head.js('../js/kendo.web.min.js',
             '../js/kendo.culture.zh-CHS.min.js',
             '../js/store.min.js',
             '../js/json2.min.js',
