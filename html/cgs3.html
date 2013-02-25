@@ -167,16 +167,14 @@
           
           <div class="block" style="border:none;">
             <div id="yl_detail_info">
-           <table class="table-b2" style="border:1px solid #ccc;">
-             <thead class="thead"><tr><th>房型</th><th>楼层</th><th>面积（m2）</th><th>窗户</th><th>床型</th><th>价格/人</th><th>可入住人数</th><th>实际入住人数</th><th>房间数</th><th width="60">房间号</th><th width="80">选择</th></tr></thead>
-           </table> 
             </div>
 
             <center style="background-color:#eee;padding:10px">
             请注意：入住的第3人和第4人的床位可能是下拉或者沙发。
             </center>
           </div>
-          <div class="block" id="yl_detail_calc"></div>
+          <div class="block" id="yl_detail_calc" style="border:none;"></div>
+          <div class="block" id="yl_detail_discount" style="border:none;"></div>
           <div class="block" id="yl_detail_remark">
             <h5>备注</h5>
             <p>
@@ -188,20 +186,31 @@
               <input type="submit" class="button button2" id="submit" value="预订" /> 
           </center>
         </div>
-        <div class="total-block clearfix block">
-          <h3>总价</h3> 
+        <div id="yl_detail_total" class="total-block clearfix block">
+          <h3 class="clearfix">购物车<span>共<s data-bind="text:total.count_customer">0</s>人</span></h3> 
           <p>总价：<span class="price">&#165;<b>2222</b></span></p>
+          <div data-bind="source:total.source" data-template="total_added_row"></div>
         </div>
       </div>
     </div>
   </div>
 </div>
 <i class="toggle-arrow arrow4"></i>
+<script type="text/template" id="total_added_row">
+    <div class="total_addrow">
+      <span style="width:130px" data-bind="text:name"></span> 
+      <span style="width:20px" data-bind="text:count"></span> 
+      <span style="width:50px" data-bind="text:row_total"></span> 
+      <span>
+    <input type="button" class="fxaction" data-id="#= id #" data-pidx="#= (typeof data.pidx=='number')?data.pidx:'null' #" data-idx="#= idx #" value="×" />
+      </span>
+    </div> 
+</script>
 
 <script id="yl_detail_added_row" type="text/template">
 <tr class="fxaddedrow fxrow-#= cuid #" data-cuid="#= cuid #">
 <td colspan="7"></td>
-<td colspan="2"><input readonly data-role="numerictextbox" value="2" style="width:60px" data-min="0" data-max="#= max #" data-format="\\#" data-bind="value:order[#=order.length-1#].real" /></td>
+<td colspan="2"><input readonly data-role="numerictextbox" data-spin="spin_blur" value="2" style="width:60px" data-min="0" data-max="#= max #" data-format="\\#" data-bind="value:order[#=order.length-1#].real" /></td>
 <td>
     <span data-bind="text: order[0].room_number" class="fxroomnumber #= data.room_number_availale?'icon-search':'' #"></span>
 </td>
@@ -233,7 +242,7 @@
   <td data-bind="text:max"></td>
   <td>
     <div class="fxhide" style="display:none">
-    <input readonly data-role="numerictextbox" class="fxreal" style="width:60px" data-min="0" data-max="#= max #" data-format="\#" data-bind="value: order[0].real" />
+    <input readonly data-role="numerictextbox" data-spin="spin_blur" class="fxreal" style="width:60px" data-min="0" data-max="#= max #" data-format="\#" data-bind="value: order[0].real" />
     </div>
   </td>
   <td class="roomcounttd">
@@ -252,8 +261,19 @@
 </script>
 
 <script id="tbody" type="text/template">
-  # for( var i=0; i< data.len; i++ ) {  #
-<thead>
+  <div class="clearfix fxcabinwrap">
+  # for( var i=0; i< len; i++ ) {  #
+    <a href="\#fxcabin-#= i #" class="inline-div">
+      <strong>#= room_info[i].cabin_type #</strong> 
+      <span>（#= room_info[i].room_left_count #）</span> 
+      \&\#165;<span class="orange">#= room_info[i].room_min_price #</span>起
+    </a> 
+  # } #
+  </div>
+           <table class="table-b2" style="border:1px solid \#ccc;">
+             <thead class="thead"><tr><th>房型</th><th>楼层</th><th>面积（m2）</th><th>窗户</th><th>床型</th><th>价格/人</th><th>可入住人数</th><th>实际入住人数</th><th>房间数</th><th width="60">房间号</th><th width="80">选择</th></tr></thead>
+  # for( var i=0; i< len; i++ ) {  #
+<thead id="fxcabin-#= i #">
   <tr class="fxtype">
     <th colspan="11">舱型:
       <span data-bind="text: room_info[#=i#].cabin_type"></span> 
@@ -263,8 +283,77 @@
 <tbody data-template="yl_detail_info_row" class="fxwrap fxwrap-#=i#" data-bind="source: room_info[#=i#].room_type">
 </tbody>
   # } #
+           </table> 
 </script>
 
+<script type="text/template" id="others_info_tmpl">
+<h3>其他费用</h3>
+<table class="table-b2" style="border:1px solid \#ccc">
+  <tr class="thead">
+    <td>名称</td>
+    <td>单价</td>
+    <td>份数</td>
+    <td width="100">小计</td>
+    <td width="100">选择</td>
+  </tr>
+  # for( var i=0; i< len; i++ ) {  #
+  <tr>
+    <td data-bind="text:others_info[#=i#].name"></td>
+    <td>
+   <span data-bind="text:others_info[#=i#].price"></span> 
+    </td>
+    <td>
+    # if(!val[i].readonly){ #
+<input readonly data-role="numerictextbox" data-spin="spin_blur" style="width:60px" data-min="0" data-format="\\#" data-bind="value:others_info[#=i#].count" />
+    # }else{ #
+      <span data-bind="text:others_info[#=i#].count"></span>
+    # }#
+    </td>
+    <td>
+   <span data-bind="text:others_calc(#= i #)"></span> 
+    </td>
+    <td data-bind="html:others_state(#= i #)">
+    </td>
+  </tr>
+  # } #
+</table>
+
+</script>
+<script type="text/template" id="discount_tmpl">
+<h3>特惠政策</h3>
+<table class="table-b2" style="border:1px solid \#ccc">
+  <tr class="thead">
+    <td>名称</td>
+    <td>单价</td>
+    <td>份数</td>
+    <td width="100">小计</td>
+    <td width="100">选择</td>
+  </tr>
+  # for( var i=0; i< len; i++ ) {  #
+  <tr>
+    <td data-bind="text:discount[#=i#].name"></td>
+    <td>
+      <span data-bind="text:discount[#=i#].price"></span> 
+    </td>
+    <td>
+    # if(!val[i].readonly){ #
+<input readonly data-role="numerictextbox" data-spin="spin_blur" style="width:60px" data-min="0" data-format="\\#" data-bind="value:discount[#=i#].count" />
+    # }else{ #
+      <span data-bind="text:discount[#=i#].count"></span>
+    # }#
+    </td>
+    <td>
+   <span data-bind="text:discount_calc(#= i #)"></span> 
+    </td>
+    <td data-bind="html:discount_state(#= i #)">
+    </td>
+  </tr>
+  # } #
+</table>
+            <center style="background-color:\#eee;padding:10px">
+             请如实选择,订单提交后,我们将会审核特惠政策的适用人群!
+            </center>
+</script>
 <script type="text/javascript" src="../js/youlun.js"></script>
 </body>
 </html>

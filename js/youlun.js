@@ -310,12 +310,50 @@ $(function(){
                             roomcount:0,
                             room_number_availale:true
                         }]
+                    },{
+                        cabin_type:'阳台房',
+                        room_left_count:'100',
+                        room_min_price:'2500',
+                        room_type:[{
+                            room:'标准4',
+                            room_img:'http://203.156.242.106:8082/file/picture/135546375106254b15e0b-16e7-41c8-b72f-fac44bb20b1b.jpg',
+                            room_intro:'设备介绍：浴室，电锤，电话，电视',
+                            floor:'5~7层',
+                            acreage:'6.6~9.0',
+                            windows:'无',
+                            bed:'双床',
+                            price:5000,
+                            max:2,
+                            roomcount:0,
+                            room_number_availale:true
+                        }]
+                    },{
+                        cabin_type:'套房',
+                        room_left_count:'100',
+                        room_min_price:'2500',
+                        room_type:[{
+                            room:'标准4',
+                            room_img:'http://203.156.242.106:8082/file/picture/135546375106254b15e0b-16e7-41c8-b72f-fac44bb20b1b.jpg',
+                            room_intro:'设备介绍：浴室，电锤，电话，电视',
+                            floor:'5~7层',
+                            acreage:'6.6~9.0',
+                            windows:'无',
+                            bed:'双床',
+                            price:5000,
+                            max:2,
+                            roomcount:0,
+                            room_number_availale:true
+                        }]
                     }],
                     others_info:[
                         {name:'成人保险',price:124,count:1},
-                        {name:'儿童保险',price:124,count:1},
-                        {name:'签证',price:124,count:1},
-                        {name:'港务费、税费、小费',price:124,count:1},
+                        {name:'儿童保险',price:134,count:1},
+                        {name:'签证',price:244,count:1},
+                        {name:'港务费、税费、小费',price:154,count:1,readonly:true},
+                    ],
+                    discount:[
+                        {name:'歌诗达邮轮儿童（为第三第四人时）免船票',price:-124,count:0},
+                        {name:'60岁及以上老人买一张送一张',price:-124,count:0},
                     ]
                 };
 

@@ -5,10 +5,12 @@ head.ready(function(){
         alert('此功能暂不能用');
     });
 
+    cgs_data.total={source:[]};
+
     $('.fximg').ezpz_tooltip();
 
     var tbody = kendo.template($('#tbody').html());
-    $('#yl_detail_info table').append(tbody({ len:cgs_data.room_info.length }));
+    $('#yl_detail_info').append(tbody({ len:cgs_data.room_info.length,room_info:cgs_data.room_info }));
 
     window.room_count_change = function(e){
         var that = e.sender;
@@ -23,8 +25,7 @@ head.ready(function(){
         var room_data = viewModel.room_info[tlen].room_type[index];
 
         if(val==0){
-            tr.find('.fxhide').hide();
-            reset_room(cuid);
+            reset_room(cuid,room_data,tr);
         }else{
             if(val<len){
                 delete_room(cuid,room_data);
@@ -51,9 +52,20 @@ head.ready(function(){
             }
         }
 
+        spin_blur(e);
     }
 
-    function reset_room(cuid){
+    $('.inline-div').on('click',function(e){
+        e.preventDefault();
+        var anchor = this.href.split('#')[1];
+        var offsetTop = $('#'+anchor).offset().top;
+        console.log($('#'+anchor).offset());
+        window.scrollTo(0,offsetTop-95);
+    });
+
+    function reset_room(cuid,room_data,tr){
+        tr.find('.fxhide').hide();
+        delete room_data.order;
         $('.fxrow-'+cuid).eq(0).find('.fxhide').hide();
     }
 
@@ -72,7 +84,6 @@ head.ready(function(){
 
         var last = $('.fxrow-'+cuid).eq(-1).after(tpl(room_data));
         kendo.init($('.fxrow-'+cuid).eq(-1));
-
         kendo.bind($(".fxaddedrow.fxrow-"+cuid), room_data);
     }
 
@@ -80,6 +91,18 @@ head.ready(function(){
         $('.fxrow-'+cuid).eq(-1).remove();
         room_data.order.pop();
     }
+
+    $('#yl_detail_calc').delegate('.fxaction','click',function(e){
+        var index = $(this).data('index');
+        viewModel.others_info[index].set('count',0);
+        kendo.bind($("#yl_detail_calc"), viewModel);
+    });
+
+    $('#yl_detail_discount').delegate('.fxaction','click',function(e){
+        var index = $(this).data('index');
+        viewModel.discount[index].set('count',0);
+        kendo.bind($("#yl_detail_discount"), viewModel);
+    });
 
     $('#yl_detail_info').delegate('.fxaction','click',function(e){
         var that = $(this);
@@ -101,16 +124,32 @@ head.ready(function(){
             kendo.bind(tr.find('.fxreal[data-role]'),room_data);
             kendo.bind(tr.find('.fxroomnumber'),room_data);
             kendo.bind($(".fxaddedrow.fxrow-"+cuid), room_data);
-            tr.next().remove();
+            tr.next().filter(".fxaddedrow").remove();
         }
 
         if(room_data.order.length==0){
-            delete room_data.order;
-            tr.find('.fxhide').hide();
-            reset_room(cuid);
+            reset_room(cuid,room_data,tr);
         }
 
         room_data.set('roomcount',room_data.roomcount-1);
+    });
+
+
+    $('#yl_detail_total').delegate('.fxaction','click',function(){
+        var that = $(this);
+        var tr = that.closest('.total_addrow');
+        var index = tr.index();
+        var data = that.data();
+        viewModel.total.source.splice(index,1);
+        viewModel.trigger('change');
+
+        if(data.id=='room_info'){
+            viewModel['room_info'][data.pidx]['room_type'][data.idx].set('roomcount',0);
+            delete viewModel['room_info'][data.pidx]['room_type'][data.idx]['order'];
+            // kendo.bind('#yl_detail_info',viewModel);
+        }
+        console.log(viewModel.total.source);
+        tr.remove();
     });
 
     $('.numerictextbox').kendoNumericTextBox({
@@ -118,50 +157,113 @@ head.ready(function(){
         culture:'zh-CHS'
     });
 
-    var cols2 = [
-        {field:"name",title:"名称"},
-        {field:"price",title:"单价",format:"¥{0}"},
-        {field:"count",title:"份数",
-            template: "<span class='pseudo_input'>${count}</span>",
-        },
-        {title:"小计",
-            template: "¥#= kendo.toString(count*price) #",
-        },
-        {title:"选择"}
-    ];
+    var others_info_tmpl= kendo.template($('#others_info_tmpl').html());
+    $('#yl_detail_calc').append(others_info_tmpl({len:cgs_data.others_info.length,val:cgs_data.others_info}));
 
-    $("#yl_detail_calc").kendoGrid({
-        scrollable:false,
-        dataSource:{
-            data:cgs_data.others_info,
-            schema: {
-                model:{
-                    fields:{
-                        count:{type:"number",editable:true,validation:{min:0}},
-                        price:{editable:false,type:"number"},
-                        total:{editable:false,type:'number'},
-                        selected:{editable:false,type:'boolean'}
-                    }
-                }
-            }
-            // pagesize:10
-        },
-        columns:cols2,
-        editable:true,
-        // groupable: true,
-        // sortable: true,
-        // pageable: {
-        //     refresh: true,
-        //     pageSizes: true
-        // },
-    });
+    var discount_tmpl= kendo.template($('#discount_tmpl').html());
+    $('#yl_detail_discount').append(discount_tmpl({len:cgs_data.discount.length,val:cgs_data.discount}));
+
+    window.spin_blur = function(e){
+        e.sender.element.blur();
+    }
 
     var viewModel = kendo.observable(cgs_data);
+    var funcs = {
+        discount_calc:function(i){
+            var that = this.discount[i];
+            return that.price * that.count;
+        },
+        discount_state:function(i){
+             var html = '';
+             if(this.discount[i].count>0){
+                 html += '<span class="fxhide" style="font-size: 16px;">&#10004;</span>';
+                 if(!this.discount[i].readonly){
+                     html += '<input type="button" data-index="'+i+'" class="fxaction fxhide" style="" value="×">';
+                 }
+             }
+             return html;
+        },
+        others_calc:function(i){
+            var that = this.others_info[i];
+            return that.price * that.count;
+        },
+        others_state:function(i){
+             var html = '';
+             if(this.others_info[i].count>0){
+                html +=  '<span class="fxhide" style="font-size: 16px;">&#10004;</span>'
+                if(!this.others_info[i].readonly){
+                    html += '<input type="button" data-index="'+i+'" class="fxaction fxhide" style="" value="×">'
+                }
+             }
+             return html;
+        }
+    }
+    $.extend(viewModel,funcs);
+
     kendo.bind($(".content"), viewModel);
 
-    viewModel.bind('change',function(e){
-        // console.log(e);
+    viewModel.others_info.bind('change',function(e){
+        kendo.bind($("#yl_detail_calc"), viewModel);
     });
+
+    viewModel.discount.bind('change',function(e){
+        kendo.bind($("#yl_detail_discount"), viewModel);
+    });
+
+    viewModel.bind('change',function(e){
+        console.log(e);
+        var count_customer = 0;
+        var source = new kendo.data.ObservableArray([]);
+
+        $.each(viewModel.room_info,function(idx,e){
+            var pidx = idx;
+            $.each(e.room_type,function(idx,e){
+                if(e.order){
+                    source.push({
+                        name:e.room,
+                        count:e.roomcount,
+                        row_total:e.roomcount*e.price,
+                        id: 'room_info',
+                        idx:idx,
+                        pidx:pidx
+                    });
+                    $.each(e.order,function(idx,e){
+                        count_customer += e.real;
+                    });
+                }
+            });
+        });
+
+        $.each(viewModel.others_info,function(idx,e){
+            if(e.count>0){
+            source.push({
+                name:e.name,
+                count:e.count,
+                row_total:e.count*e.price,
+                id:'others_info',
+                idx:idx,
+            });
+            }
+        });
+
+        $.each(viewModel.discount,function(idx,e){
+            if(e.count>0){
+            source.push({
+                name:e.name,
+                count:e.count,
+                row_total:e.count*e.price,
+                id:'discount',
+                idx:idx
+            });
+            }
+        });
+
+        viewModel.total.count_customer = count_customer;
+        viewModel.total.source = source;
+        kendo.bind($("#yl_detail_total"), viewModel);
+    });
+
+    viewModel.trigger('change');
 
     $('#submit').bind('click',function(e){
         e.preventDefault();

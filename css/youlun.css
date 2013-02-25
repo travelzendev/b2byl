@@ -885,7 +885,7 @@ h5 {
   margin-top: 10px; }
 
 .ylinfo {
-  width: 930px;
+  width: 1030px;
   padding: 20px; }
   .ylinfo .thumb {
     float: left;
@@ -924,7 +924,7 @@ h5 {
 
 .total-block {
   float: left;
-  width: 150px;
+  width: 250px;
   margin-left: 20px; }
   .total-block h3 {
     background: #ddd;
@@ -1385,3 +1385,36 @@ h5 {
   height: 14px;
   background: url(../img/search.png) no-repeat 0 50%;
   cursor: pointer; }
+
+.fxcabinwrap {
+  margin: 10px 0; }
+  .fxcabinwrap a {
+    text-align: center;
+    display: block;
+    float: left;
+    width: 160px;
+    padding: 10px 0;
+    border: 1px solid #ccc;
+    margin-right: 5px; }
+    .fxcabinwrap a:hover {
+      text-decoration: none;
+      border: 1px solid #36c; }
+
+#yl_detail_calc .k-numerictextbox {
+  width: 70px; }
+
+#yl_detail_total h3 span {
+  font-weight: normal;
+  float: right;
+  font-size: 12px; }
+#yl_detail_total h3 s {
+  font-weight: bold;
+  font-size: 16px;
+  padding: 0 2px;
+  color: #36c; }
+
+.total_addrow {
+  padding: 5px;
+  border-top: 1px solid #ddd; }
+  .total_addrow span {
+    display: inline-block; }
