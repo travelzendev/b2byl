@@ -309,6 +309,8 @@ head.ready(function(){
 
         viewModel.total.count_customer = count_customer;
         viewModel.total.total_money = total_money;
+        viewModel.total.return_money = 780;
+        viewModel.total.calc_money = total_money;
         viewModel.total.source = source;
         kendo.bind($("#yl_detail_total"), viewModel);
     });
@@ -322,8 +324,8 @@ head.ready(function(){
 
         store.set('cgs_submited_data', submited);
 
-        // location.href="cgs5.html";
-        console.log(submited);
+        location.href="cgs5.html";
+        // console.log(submited);
     });
 
     $('.fximg').ezpz_tooltip();

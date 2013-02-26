@@ -169,18 +169,12 @@
             <div id="yl_detail_info">
             </div>
 
-            <center style="background-color:#eee;padding:10px">
+            <center class="note">
             请注意：入住的第3人和第4人的床位可能是下拉或者沙发。
             </center>
           </div>
           <div class="block" id="yl_detail_calc" style="border:none;"></div>
           <div class="block" id="yl_detail_discount" style="border:none;"></div>
-          <div class="block" id="yl_detail_remark">
-            <h5>备注</h5>
-            <p>
-              <textarea id="remark" name="" data-bind="value:additional_info.remark" rows="10" cols="30"></textarea> 
-            </p>
-          </div>
           <center class="clearfix">
             <a href="cgs2.html" style="float:left;">&laquo;返回上一步</a>
               <input type="submit" class="button button2" id="submit" value="预订" /> 
@@ -188,7 +182,9 @@
         </div>
         <div id="yl_detail_total" class="total-block clearfix block">
           <h3 class="clearfix">购物车<span>共<s data-bind="text:total.count_customer">0</s>人</span></h3> 
-          <p>总价：<span class="price">&#165;<b data-bind="text:total.total_money"></b></span></p>
+          <p><label>总价：</label><span class="price">&#165;<b data-bind="text:total.total_money"></b></span></p>
+          <p><label>结算价：</label><span class="price">&#165;<b data-bind="text:total.calc_money"></b></span></p>
+          <p><label>返佣：</label><span class="price">&#165;<b data-bind="text:total.return_money"></b></span></p>
           <div data-bind="source:total.source" data-template="total_added_row"></div>
         </div>
       </div>
@@ -353,7 +349,7 @@
   </tr>
   # } #
 </table>
-            <center style="background-color:\#eee;padding:10px">
+            <center class="note">
              请如实选择,订单提交后,我们将会审核特惠政策的适用人群!
             </center>
 </script>

@@ -248,13 +248,8 @@ $(function(){
 
                 window.cgs_data={
                     order_num:"YHk5261561515151",
-                    additional_info:{
-                        remark:"备备备备备注注注注注备注",
-                        total:0,
-                    },
+                    remark:"备备备备备注注注注注备注",
                     line_info:{
-                        adt_amount:2,
-                        chd_amount:0,
                         line_name:'"歌诗达维多利亚号"新加坡、马来西亚豪华畅游6日游',
                         departure_date:'2012-10-10',
                         days:3,
