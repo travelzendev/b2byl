@@ -1418,3 +1418,12 @@ h5 {
   border-top: 1px solid #ddd; }
   .total_addrow span {
     display: inline-block; }
+
+#backTop {
+  cursor: pointer;
+  padding: 10px;
+  color: #fff;
+  background: #39f;
+  right: 0;
+  bottom: 2px;
+  position: fixed; }

@@ -1,5 +1,43 @@
 head.ready(function(){
+
     store.clear();
+
+    $.fn.backTop = function(){
+        var t = $(this);
+        var opts = t.data();
+        opts = $.extend({
+            hide:true,
+            showtop:10,
+            stop:0
+        },opts);
+
+        var postop = $(window).scrollTop();
+
+        if(opts.hide && postop < opts.showtop){
+            t.hide();
+        }
+
+        t.bind('click',function(){
+            window.scrollTo(0,0);
+        });
+
+        if(opts.hide){
+            $(window).bind('scroll',function(){
+                var postop = $(this).scrollTop();
+
+                if( postop > opts.showtop ){
+                    t.show(100);
+                }else{
+                    t.hide(100);
+                }
+            });
+        }
+
+    };
+
+
+    $('#backTop').backTop();
+
 
     $('body').delegate('.icon-search','click',function(){
         alert('此功能暂不能用');
