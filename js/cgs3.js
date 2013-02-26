@@ -25,7 +25,7 @@ head.ready(function(){
         var room_data = viewModel.room_info[tlen].room_type[index];
 
         if(val==0){
-            reset_room(cuid,room_data,tr);
+            reset_room(room_data,tr);
         }else{
             if(val<len){
                 delete_room(cuid,room_data);
@@ -59,14 +59,12 @@ head.ready(function(){
         e.preventDefault();
         var anchor = this.href.split('#')[1];
         var offsetTop = $('#'+anchor).offset().top;
-        console.log($('#'+anchor).offset());
         window.scrollTo(0,offsetTop-95);
     });
 
-    function reset_room(cuid,room_data,tr){
+    function reset_room(room_data,tr){
         tr.find('.fxhide').hide();
         delete room_data.order;
-        $('.fxrow-'+cuid).eq(0).find('.fxhide').hide();
     }
 
     function add_room(cuid,val,room_data){
@@ -121,35 +119,32 @@ head.ready(function(){
             tr.remove();
         }else{
             room_data.order.splice(0,1);
-            kendo.bind(tr.find('.fxreal[data-role]'),room_data);
-            kendo.bind(tr.find('.fxroomnumber'),room_data);
-            kendo.bind($(".fxaddedrow.fxrow-"+cuid), room_data);
             tr.next().filter(".fxaddedrow").remove();
         }
 
         if(room_data.order.length==0){
-            reset_room(cuid,room_data,tr);
+            reset_room(room_data,tr);
         }
 
         room_data.set('roomcount',room_data.roomcount-1);
     });
-
 
     $('#yl_detail_total').delegate('.fxaction','click',function(){
         var that = $(this);
         var tr = that.closest('.total_addrow');
         var index = tr.index();
         var data = that.data();
+
         viewModel.total.source.splice(index,1);
-        viewModel.trigger('change');
 
         if(data.id=='room_info'){
             viewModel['room_info'][data.pidx]['room_type'][data.idx].set('roomcount',0);
-            delete viewModel['room_info'][data.pidx]['room_type'][data.idx]['order'];
-            // kendo.bind('#yl_detail_info',viewModel);
         }
-        console.log(viewModel.total.source);
-        tr.remove();
+
+        if(data.id=='others_info' || data.id=='discount'){
+            viewModel[data.id][data.idx].set('count',0);
+        }
+
     });
 
     $('.numerictextbox').kendoNumericTextBox({
@@ -174,33 +169,43 @@ head.ready(function(){
             return that.price * that.count;
         },
         discount_state:function(i){
-             var html = '';
-             if(this.discount[i].count>0){
-                 html += '<span class="fxhide" style="font-size: 16px;">&#10004;</span>';
-                 if(!this.discount[i].readonly){
-                     html += '<input type="button" data-index="'+i+'" class="fxaction fxhide" style="" value="×">';
-                 }
-             }
-             return html;
+            var html = '';
+            if(this.discount[i].count>0){
+                html += '<span class="fxhide" style="font-size: 16px;">&#10004;</span>';
+                if(!this.discount[i].readonly){
+                    html += '<input type="button" data-index="'+i+'" class="fxaction fxhide" style="" value="×">';
+                }
+            }
+            return html;
         },
         others_calc:function(i){
             var that = this.others_info[i];
             return that.price * that.count;
         },
         others_state:function(i){
-             var html = '';
-             if(this.others_info[i].count>0){
+            var html = '';
+            if(this.others_info[i].count>0){
                 html +=  '<span class="fxhide" style="font-size: 16px;">&#10004;</span>'
                 if(!this.others_info[i].readonly){
                     html += '<input type="button" data-index="'+i+'" class="fxaction fxhide" style="" value="×">'
                 }
-             }
-             return html;
+            }
+            return html;
         }
     }
     $.extend(viewModel,funcs);
 
     kendo.bind($(".content"), viewModel);
+
+    viewModel.room_info.bind('change',function(e){
+        var that = e.items[0];
+        if(that.roomcount==0){
+            delete that.order;
+            var rows = $('.fxrow-'+that.cuid);
+            rows.filter('.fxaddedrow').remove();
+            rows.filter('.fxdatarow').find('.fxhide').hide();
+        }
+    });
 
     viewModel.others_info.bind('change',function(e){
         kendo.bind($("#yl_detail_calc"), viewModel);
@@ -211,14 +216,13 @@ head.ready(function(){
     });
 
     viewModel.bind('change',function(e){
-        console.log(e);
         var count_customer = 0;
         var source = new kendo.data.ObservableArray([]);
 
         $.each(viewModel.room_info,function(idx,e){
             var pidx = idx;
             $.each(e.room_type,function(idx,e){
-                if(e.order){
+                if(e.order && e.roomcount>0){
                     source.push({
                         name:e.room,
                         count:e.roomcount,
@@ -236,29 +240,37 @@ head.ready(function(){
 
         $.each(viewModel.others_info,function(idx,e){
             if(e.count>0){
-            source.push({
-                name:e.name,
-                count:e.count,
-                row_total:e.count*e.price,
-                id:'others_info',
-                idx:idx,
-            });
+                source.push({
+                    name:e.name,
+                    count:e.count,
+                    row_total:e.count*e.price,
+                    id:'others_info',
+                    idx:idx,
+                    readonly:e.readonly
+                });
             }
         });
 
         $.each(viewModel.discount,function(idx,e){
             if(e.count>0){
-            source.push({
-                name:e.name,
-                count:e.count,
-                row_total:e.count*e.price,
-                id:'discount',
-                idx:idx
-            });
+                source.push({
+                    name:e.name,
+                    count:e.count,
+                    row_total:e.count*e.price,
+                    id:'discount',
+                    idx:idx,
+                    readonly:e.readonly
+                });
             }
         });
 
+       var total_money = 0;
+       $.each(source,function(idx,e){
+            total_money += e.row_total;
+       });
+
         viewModel.total.count_customer = count_customer;
+        viewModel.total.total_money = total_money;
         viewModel.total.source = source;
         kendo.bind($("#yl_detail_total"), viewModel);
     });

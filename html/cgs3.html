@@ -188,7 +188,7 @@
         </div>
         <div id="yl_detail_total" class="total-block clearfix block">
           <h3 class="clearfix">购物车<span>共<s data-bind="text:total.count_customer">0</s>人</span></h3> 
-          <p>总价：<span class="price">&#165;<b>2222</b></span></p>
+          <p>总价：<span class="price">&#165;<b data-bind="text:total.total_money"></b></span></p>
           <div data-bind="source:total.source" data-template="total_added_row"></div>
         </div>
       </div>
@@ -202,7 +202,9 @@
       <span style="width:20px" data-bind="text:count"></span> 
       <span style="width:50px" data-bind="text:row_total"></span> 
       <span>
+    # if(!data.readonly){ #
     <input type="button" class="fxaction" data-id="#= id #" data-pidx="#= (typeof data.pidx=='number')?data.pidx:'null' #" data-idx="#= idx #" value="×" />
+    # } #
       </span>
     </div> 
 </script>
