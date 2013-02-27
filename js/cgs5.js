@@ -8,21 +8,38 @@ head.ready(function(){
     submited.delivery_info = delivery_info;
     submited.invoice_info = invoice_info;
 
+    $('#passenger_info').delegate('.psr_addpsr','click',function(){
+        var t = $(this);
+        var ele = eval('viewModel.'+t.closest('.psr_block').data('ele'));
+        var prt = t.closest('.psr_block');
+        if(ele.passenger_info.length >= ele.real) return;
+        ele.passenger_info.push({
+            psr_name:'',
+            psr_visanumber:'',
+            psr_birth:'',
+            psr_gender:'male',
+            psr_visa:0,
+            psr_insurance:0,
+            psr_id:ele.passenger_info.length+1
+        });
+    });
 
-    $('.numerictextbox').kendoNumericTextBox({
-        format:"#"
+
+    $('#passenger_info').delegate('.psr_delpsr','click',function(){
+        var t = $(this);
+        var ele = eval('viewModel.'+t.closest('.psr_block').data('ele'));
+        var id = t.data('id');
+
+        ele.passenger_info.splice(id-1,1);
     });
 
     var viewModel = kendo.observable(submited);
+
+    var passenger_info_tpl = kendo.template($('#passenger_info_wrap_tmpl').html());
+    $('#passenger_info').append(passenger_info_tpl({room_info:viewModel.room_info}));
+
     kendo.bind($(".content"), viewModel);
 
-    $('#passenger_info').delegate('.add_passenger','click',function(){
-        var room_info = viewModel.room_info;
-    });
-
-    viewModel.bind('change',function(e){
-        console.log(e);
-    });
 
     $('#submit').bind('click',function(e){
         e.preventDefault();
@@ -31,5 +48,7 @@ head.ready(function(){
         store.set('order_submited',submited);
         console.log(submited);
     });
+
+
 
 });

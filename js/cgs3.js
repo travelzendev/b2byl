@@ -302,10 +302,10 @@ head.ready(function(){
             }
         });
 
-       var total_money = 0;
-       $.each(source,function(idx,e){
+        var total_money = 0;
+        $.each(source,function(idx,e){
             total_money += e.row_total;
-       });
+        });
 
         viewModel.total.count_customer = count_customer;
         viewModel.total.total_money = total_money;
@@ -318,14 +318,79 @@ head.ready(function(){
     viewModel.trigger('change');
 
     $('#submit').bind('click',function(e){
-        e.preventDefault();
-        //存储在本地，不提交
-        var submited = viewModel.toJSON();
 
-        store.set('cgs_submited_data', submited);
+        if (!Array.prototype.filter)
+            {
+                Array.prototype.filter = function(fun /*, thisp */)
+                {
+                    "use strict";
 
-        location.href="cgs5.html";
-        // console.log(submited);
+                    if (this == null)
+                        throw new TypeError();
+
+                    var t = Object(this);
+                    var len = t.length >>> 0;
+                    if (typeof fun != "function")
+                        throw new TypeError();
+
+                    var res = [];
+                    var thisp = arguments[1];
+                    for (var i = 0; i < len; i++)
+                    {
+                        if (i in t)
+                            {
+                                var val = t[i]; // in case fun mutates this
+                                if (fun.call(thisp, val, i, t))
+                                    res.push(val);
+                            }
+                    }
+
+                    return res;
+                };
+            }
+
+
+            e.preventDefault();
+            //存储在本地，不提交
+            var submited = viewModel.toJSON();
+
+            var arr = [{
+                psr_name:'',
+                psr_visanumber:'',
+                psr_birth:'',
+                psr_gender:'male',
+                psr_visa:0,
+                psr_insurance:0,
+                psr_id:1
+            }];
+
+            submited.room_info = submited.room_info.filter(function(i,e){
+                var filterd = i.room_type.filter(function(i2,e2){
+                    if(i2.roomcount > 0){
+                        $.each(i2.order,function(idx,item){
+                            item.passenger_info = arr;
+                        });
+                    }
+                    return i2.roomcount > 0;
+                });
+
+                i.room_type = filterd;
+
+                return filterd.length>0
+            });
+
+            submited.others_info = submited.others_info.filter(function(i,e){
+                return i.count > 0;
+            });
+
+            submited.discount = submited.discount.filter(function(i,e){
+                return i.count > 0;
+            });
+
+            store.set('cgs_submited_data', submited);
+
+            location.href="cgs5.html";
+            // console.log(submited);
     });
 
     $('.fximg').ezpz_tooltip();

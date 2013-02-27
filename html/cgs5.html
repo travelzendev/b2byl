@@ -157,7 +157,7 @@
               <script type="text/template" id="room_info_tmpl">
                 # var len= room_type.length; for (var i=0;i<len; i++  ) { #
                   # var item = room_type[i] #
-                <tr style="#= item.roomcount>0?'':'display:none' #">
+                <tr>
                     <td>#= item.room #</td>
                     <td>#= item.room_intro #</td>
                     <td>#= item.parent().parent().cabin_type #</td>
@@ -183,7 +183,7 @@
                       <tbody data-bind="source:others_info" data-template="others_info_tmpl"></tbody>
                   </table> 
               <script type="text/template" id="others_info_tmpl">
-                <tr style="#= count>0?'':'display:none' #">
+                <tr>
                     <td>#= name #</td>
                     <td>#= price #</td>
                     <td>#= count #</td>
@@ -192,30 +192,101 @@
               </script>
               </div>
             </div>
+
             <div class="block">
               <h3 class="gray-title">乘客信息</h3>
-              <div id="passenger_info" data-bind="source:this" data-template="passenger_info_tmpl" class="block-body">
+              <div id="passenger_info" class="block-body">
               </div>
               <center class="note">
               请每间房至少填写一名乘客信息，其它信息可待订单提交后再进行补充。
               </center>
-              <script type="text/template" id="passenger_info_tmpl">
-                #for(var i=0; i < room_info.length;i++){ #
-                    #for(var j=0; j < room_info[i].room_type.length;j++){ #
-                      #var room = room_info[i].room_type[j];#
-                      # if(room.roomcount > 0){ #
-                          #for(var k=0; k < room.order.length;k++){ #
-                          # var order =  room.order[k]; #
-                          <div class="psr_block">
-                            <div class="psr_title">#= room_info[i].cabin_type +' - '+ room.room +' - '+ order.room_number  # <span>实际入住人数#= order.real  #<span>  </div> 
-                            <div class="psr_body">22222</div>
+<script type="text/template" id="passenger_info_wrap_tmpl">
+                # $.each(room_info,function(idx0,room_info){ #
+                # $.each(room_info.room_type,function(idx1,room){ #
+                  # $.each(room.order,function(idx2,order){ #
+                          <div class="psr_block"  data-ele="room_info[#=idx0#].room_type[#= idx1 #].order[#= idx2 #]">
+                            <div class="psr_title">#= room_info.cabin_type +' - '+ room.room +' - '+ order.room_number  # <span>实际入住#= order.real  #人<span></div> 
+
+                            <div data-template="passenger_info_tmpl" data-bind="source:room_info[#=idx0#].room_type[#= idx1 #].order[#= idx2 #].passenger_info" class="psr_body">
+                            </div>
+                            <div class="psr_addpsr_wrap">
+                              <input type="button" class="psr_addpsr" value="+ 增加"  /> 
+                            </div>
+
                           </div>
-                          # } #
-                      #}#
+                  # }); #
+                # }); #
+                # }); #
+</script>
 
-
-                    #}#
-                #}#
+              <script type="text/template" id="passenger_info_tmpl">
+                # if(psr_id>1){  #
+                <hr>
+                # } #
+                              <table class="table-b7"> 
+                              <tr>
+                                <td width="80">
+                                # if(psr_id>1){  #
+                              <input data-id="#= psr_id #" type="button" class="psr_delpsr" value="- 删除"  /> 
+                              # } #
+                                </td>
+                                <td>第<s>#=psr_id#</s>位乘客 成人 20岁</td>
+                              </tr>
+                              <tr>
+                                <td><b class="red">*</b>护照姓名</td>
+                                <td>
+                               <input class="k-input" data-bind="value:psr_name" type="text" /> 
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>护照号码</td>
+                                <td>
+                               <input class="k-input" data-bind="value:psr_visanumber" name="" type="text" /> 
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>出生日期</td>
+                                <td>
+                               <input class="k-input" data-role="datepicker" data-bind="value:psr_birth" name="" type="text" /> 
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>性别</td>
+                                <td>
+                                <label>
+                                  <input name="#= uid #_gender" value="male" data-bind="checked:psr_gender" type="radio" />男
+                                </label>
+                                &nbsp;&nbsp;
+                                <label>
+                                  <input name="#= uid #_gender"value="female" data-bind="checked:psr_gender" type="radio" />女
+                                </label>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>代办签证</td>
+                                <td>
+                                <label>
+                                <input name="#= uid #_visa" value="1" data-bind="checked:psr_visa" type="radio" />需要
+                                </label>
+                                &nbsp;&nbsp;
+                                <label>
+                                <input name="#= uid #_visa" value="0" data-bind="checked:psr_visa" type="radio" />不需要
+                                </label>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>购买保险</td>
+                                <td>
+                                <label>
+                                  <input name="#= uid #_insurance" value="1" data-bind="checked:psr_insurance" type="radio" />需要
+                                </label>
+                                &nbsp;&nbsp;
+                                <label>
+                                  <input name="#= uid #_insurance" value="0" data-bind="checked:psr_insurance" type="radio" />不需要
+                                </label>
+                                </td>
+                              </tr>
+                              </table>
               </script>
             </div>
             <div class="block" id="contact_info">

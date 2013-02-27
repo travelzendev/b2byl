@@ -1444,3 +1444,7 @@ center.note {
 .psr_block {
   border-bottom: 1px solid #ddd;
   margin-bottom: 10px; }
+
+.psr_addpsr_wrap {
+  margin: 5px 0;
+  text-align: right; }
