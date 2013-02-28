@@ -87,7 +87,6 @@ head.ready(function(){
     ];
 
     function pr_orderstatus(i){
-        console.log(i);
 // OrderStatus		INT		DEFAULT(0)  NOT NULL,--订单状态(0:已取消,1:处理中,2:待付款,3:待付尾款,4:付款成功)
         var text = "";
         switch (i.order_status) {
