@@ -90,12 +90,23 @@
     <span><i class="icon icon3"></i>当前位置： <a href="cgs1.html">邮轮</a> &gt; 邮轮详情</span>
   </div>
   <div class="content area">
-      <div class="mo-cgs12 clearfix">
+      <div class="mo-cgs13 clearfix">
         <div class="maincontent">
           <div class="content-col">
-
+<div class="block border-box clearfix">
+          <span data-bind="text:order_num"></span>
+          共<span class="red" data-bind="text:count_psr"></span>人
+           签证<span class="red" data-bind="text:count_visa"></span>份
+          保险<span class="red" data-bind="text:count_insurance"></span>份
+            <span>
+            请将扫描件上传至附件，我们会及时查看！
+            </span>
+            <span>
+            注：红色为未提交资料
+            </span>
+        </div>
             <div class="block">
-              <h3 class="gray-title">乘客信息</h3>
+              <h3 class="gray-title">实体资料</h3>
               <div id="passenger_info" class="block-body">
               </div>
               <script type="text/template" id="passenger_info_wrap_tmpl">
@@ -103,7 +114,7 @@
                 # $.each(room_info.room_type,function(idx1,room){ #
                   # $.each(room.order,function(idx2,order){ #
                           <div class="psr_block"  data-ele="room_info[#=idx0#].room_type[#= idx1 #].order[#= idx2 #]">
-                            <div class="psr_title">#= room_info.cabin_type +' - '+ room.room +' - '+ order.room_number  # <span>实际入住#= order.real  #人<span></div> 
+                            <div class="psr_title">#= room_info.cabin_type +' - '+ room.room +' - '+ order.room_number  # <span>#room_info.parent().parent().count_psr += order.real # 实际入住#= order.real  #人<span></div> 
 
                             <div data-template="passenger_info_tmpl" data-bind="source:room_info[#=idx0#].room_type[#= idx1 #].order[#= idx2 #].passenger_info" class="psr_body">
                             </div>
@@ -127,55 +138,33 @@
                   <tr>
                     <td><b class="red">*</b>护照姓名</td>
                     <td>
-                   <input class="k-input" data-bind="value:psr_name" type="text" /> 
+                    <span data-bind="text:psr_name"></span>
                     </td>
                   </tr>
                   <tr>
-                    <td>护照号码</td>
+                    <td>需要代办服务</td>
                     <td>
-                   <input class="k-input" data-bind="value:psr_visanumber" name="" type="text" /> 
+
+                    #if(psr_visa==1){#
+                    签证
+                    # var current = pviewModel.get('count_visa'); pviewModel.set('count_visa',current+1); #
+                    #}#
+                    #if(psr_insurance==1){#
+                    # var current = pviewModel.get('count_insurance'); pviewModel.set('count_insurance',current+1); #
+                    、保险
+                    #}#
                     </td>
                   </tr>
                   <tr>
-                    <td>出生日期</td>
-                    <td>
-                   <input class="k-input" data-role="datepicker" data-bind="value:psr_birth" name="" type="text" /> 
-                    </td>
+                    <td>分类</td>
+                    <td data-bind="text:psr_type"></td>
                   </tr>
                   <tr>
-                    <td>性别</td>
+                    <td>所需资料</td>
                     <td>
-                    <label>
-                      <input name="#= uid #_gender" value="male" data-bind="checked:psr_gender" type="radio" />男
-                    </label>
-                    &nbsp;&nbsp;
-                    <label>
-                      <input name="#= uid #_gender"value="female" data-bind="checked:psr_gender" type="radio" />女
-                    </label>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>代办签证</td>
-                    <td>
-                    <label>
-                    <input name="#= uid #_visa" value="1" data-bind="checked:psr_visa" type="radio" />需要
-                    </label>
-                    &nbsp;&nbsp;
-                    <label>
-                    <input name="#= uid #_visa" value="0" data-bind="checked:psr_visa" type="radio" />不需要
-                    </label>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>购买保险</td>
-                    <td>
-                    <label>
-                      <input name="#= uid #_insurance" value="1" data-bind="checked:psr_insurance" type="radio" />需要
-                    </label>
-                    &nbsp;&nbsp;
-                    <label>
-                      <input name="#= uid #_insurance" value="0" data-bind="checked:psr_insurance" type="radio" />不需要
-                    </label>
+                    # $.each(material,function(idx,e){ #
+                      <span class="material-item #= e[1]==1?'':'red'#">#= e[0] #</span>&nbsp;&nbsp;
+                    # }) #
                     </td>
                   </tr>
                   </table>
