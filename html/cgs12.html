@@ -93,7 +93,13 @@
       <div class="mo-cgs12 clearfix">
         <div class="maincontent">
           <div class="content-col">
-          <h3 data-bind="text:order_num"></h3>
+<div class="block border-box clearfix">
+          <span data-bind="text:order_num"></span>
+          旅客共<span class="red" data-bind="text:count_psr"></span>人
+          <p>
+          订舱时以此数据为准。一但录入，将不能更改，如需更名或改变其中任何一项，均需支付船方系统更名费用200元/次/人。
+          </p>
+        </div>
             <div class="block">
               <h3 class="gray-title">乘客信息</h3>
               <div id="passenger_info" class="block-body">
@@ -103,7 +109,7 @@
                 # $.each(room_info.room_type,function(idx1,room){ #
                   # $.each(room.order,function(idx2,order){ #
                           <div class="psr_block"  data-ele="room_info[#=idx0#].room_type[#= idx1 #].order[#= idx2 #]">
-                            <div class="psr_title">#= room_info.cabin_type +' - '+ room.room +' - '+ order.room_number  # <span>实际入住#= order.real  #人<span></div> 
+                            <div class="psr_title">#= room_info.cabin_type +' - '+ room.room +' - '+ order.room_number  # <span># var current= pviewModel.count_psr;pviewModel.set('count_psr',current+order.real);  #实际入住#= order.real  #人<span></div> 
 
                             <div data-template="passenger_info_tmpl" data-bind="source:room_info[#=idx0#].room_type[#= idx1 #].order[#= idx2 #].passenger_info" class="psr_body">
                             </div>
