@@ -1451,3 +1451,8 @@ center.note {
 .psr_table {
   border-bottom: 1px solid #ddd;
   padding-bottom: 10px; }
+
+.discount-icon {
+  background-color: #c00;
+  padding: 3px;
+  color: #fff; }

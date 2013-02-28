@@ -393,7 +393,7 @@ head.ready(function(){
             // console.log(submited);
     });
 
-    $('.fximg').ezpz_tooltip();
+    $('.tooltip').ezpz_tooltip();
 
     $(window).bind('scroll',function(){
         var that=$(this);

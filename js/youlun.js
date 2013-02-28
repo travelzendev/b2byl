@@ -177,7 +177,7 @@ $(function(){
                     book_date:'2012-01-05',
                     order_total:2250,
                     order_return:50,
-                    order_status:'待付款',
+                    order_status:2,
                     order_pay:'全款/定金',
                     psrinfo_status:'齐全',
                     material_status:'缺资料',
@@ -202,6 +202,7 @@ $(function(){
 
                 window.order_info = [{
                     selected:false,
+                    discount:true,
                     order_num:'YK25126516515151',
                     line_name:'丽星邮轮处女星号新加坡-槟城-普吉岛五天四晚',
                     cabin_count:3,
@@ -209,8 +210,7 @@ $(function(){
                     departure_date:'2012-01-05',
                     book_date:'2012-01-05',
                     order_total:2250,
-                    order_return:50,
-                    order_status:'待付款',
+                    order_status:2,
                     psrinfo_status:'齐全',
                     material_status:'缺资料',
                     attachment_count:2,
@@ -225,7 +225,7 @@ $(function(){
                     book_date:'2012-01-05',
                     order_total:2250,
                     order_return:50,
-                    order_status:'待付款',
+                    order_status:4,
                     psrinfo_status:'齐全',
                     material_status:'缺资料',
                     attachment_count:2,
@@ -240,7 +240,7 @@ $(function(){
                     book_date:'2012-01-05',
                     order_total:2250,
                     order_return:50,
-                    order_status:'待付款',
+                    order_status:0,
                     psrinfo_status:'齐全',
                     material_status:'缺资料',
                     attachment_count:2,
@@ -370,6 +370,14 @@ $(function(){
 
                 if($('.mo-cgs9').length){
                     head.js('../js/cgs9.js');
+                }
+
+                if($('.mo-cgs12').length){
+                    head.js('../js/cgs12.js');
+                }
+
+                if($('.mo-cgs13').length){
+                    head.js('../js/cgs13.js');
                 }
 
                 if($('.mo-yys2').length){
