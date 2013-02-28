@@ -97,13 +97,12 @@
         <a href="" class="k-button">实体资料</a> 
         <a href="" class="k-button">账单</a> 
         <a href="" class="k-button">取消订单</a> 
-        <a href="" class="k-button">编辑</a> 
         <a href="" class="k-button">上传汇款凭证</a> 
         <a href="" class="k-button">上传附件</a> 
         <a href="" class="k-button">付款</a> 
         <a href="" class="k-button">申请退款</a> 
       </div>
-
+<div class="content-col">
       <div class="block">
         <h3 class="gray-title">订单信息</h3>
         <div id="order_info">
@@ -180,16 +179,84 @@
       </div>
       <div class="block">
         <h3 class="gray-title">航线信息</h3>
-        <div id="line_info"></div>
+        <div id="line_info">
+          <table class="table-b2">
+            <thead>
+              <tr class="thead">
+                <th style="border-left:0">航线信息名称</th> 
+                <th>所属邮轮</th>
+                <th>所属航次</th>
+                <th>订单总价</th>
+                <th style="border-right:0">返佣</th>
+              </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td data-bind="text:line_info.line_name"></td>
+              <td data-bind="text:line_info.cruise_name"></td>
+              <td data-bind="text:line_info.cruise_id"></td>
+              <td data-bind="text:total.total_money"></td>
+              <td data-bind="text:total.return_money"></td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
       <div class="block">
         <h3 class="gray-title">其他费用</h3>
-        <div id="others_info"></div>
+        <div id="others_info">
+          <table class="table-b2">
+            <thead>
+              <tr class="thead">
+                <th style="border-left:0">名称</th> 
+                <th>单价</th>
+                <th>份数</th>
+                <th style="border-right:0">小计</th>
+              </tr>
+            </thead>
+            <tbody data-bind="source:others_info" data-template="others_info_tmpl"></tbody>
+          </table> 
+          <script type="text/template" id="others_info_tmpl">
+            <tr>
+                    <td>#= name #</td>
+                    <td>#= price #</td>
+                    <td>#= count #</td>
+                    <td>#= count*price #</td>
+                  </tr>
+          </script>
+        </div>
       </div>
 
       <div class="block">
         <h3 class="gray-title">房型信息</h3>
-        <div id="room_info"></div>
+        <div id="room_info">
+          <table class="table-b2">
+            <thead>
+              <tr class="thead">
+                <th style="border-left:0">房型</th> 
+                <th>介绍</th>
+                <th>舱位名称</th>
+                <th>舱位价格</th>
+                <th>房间数量</th>
+                <th style="border-right:0">小计</th>
+              </tr>
+            </thead>
+            <tbody data-bind="source:room_info" data-template="room_info_tmpl"></tbody>
+          </table> 
+        </div>
+        <script type="text/template" id="room_info_tmpl">
+          # var len= room_type.length; for (var i=0;i<len; i++  ) { #
+                  # var item = room_type[i] #
+                <tr>
+                    <td>#= item.room #</td>
+                    <td>#= item.room_intro #</td>
+                    <td>#= item.parent().parent().cabin_type #</td>
+                    <td>#= item.price #</td>
+                    <td>#= item.roomcount #</td>
+                    <td>#= item.roomcount*item.price #</td>
+                  </tr>
+                # } #
+        </script>
       </div>
       <div class="block">
         <h3 class="gray-title">附件</h3>
@@ -245,13 +312,12 @@
           <a href="" class="k-button">实体资料</a> 
           <a href="" class="k-button">账单</a> 
           <a href="" class="k-button">取消订单</a> 
-          <a href="" class="k-button">编辑</a> 
           <a href="" class="k-button">上传汇款凭证</a> 
           <a href="" class="k-button">上传附件</a> 
           <a href="" class="k-button">付款</a> 
           <a href="" class="k-button">申请退款</a> 
         </div>
-      </div>
+      </div></div>
     </div>
   </div>
   <i class="toggle-arrow arrow4"></i>

@@ -22,6 +22,9 @@ head.ready(function(){
             psr_insurance:0,
             psr_id:ele.passenger_info.length+1
         });
+
+        kendo.bind($(".content"), viewModel);
+
     });
 
 
@@ -31,6 +34,7 @@ head.ready(function(){
         var id = t.data('id');
 
         ele.passenger_info.splice(id-1,1);
+        kendo.bind($(".content"), viewModel);
     });
 
     var viewModel = kendo.observable(submited);
@@ -46,7 +50,9 @@ head.ready(function(){
         //存储在本地，不提交
         var submited = viewModel.toJSON();
         store.set('order_submited',submited);
-        console.log(submited);
+
+        location.href="cgs6.html";
+        // console.log(submited);
     });
 
 
