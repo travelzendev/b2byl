@@ -474,11 +474,11 @@ $(function(){
                         {name:'成人保险',price:124,count:1},
                         {name:'儿童保险',price:134,count:1},
                         {name:'签证',price:244,count:1},
-                        {name:'港务费、税费、小费',price:154,count:1,readonly:true},
+                        {name:'港务费、税费、小费',price:154,count:1,readonly:true}
                     ],
                     discount:[
                         {name:'歌诗达邮轮儿童（为第三第四人时）免船票',price:-124,count:0},
-                        {name:'60岁及以上老人买一张送一张',price:-124,count:0},
+                        {name:'60岁及以上老人买一张送一张',price:-124,count:0}
                     ]
                 };
 
