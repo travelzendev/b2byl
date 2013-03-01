@@ -105,37 +105,40 @@
               <span class="title" data-bind="text:line_info.line_name"></span>
               </p>
               <p class="row row2">
-              <span>出发时间：<s data-bind="text:line_info.departure_date"></s></span> 
-              <span>天数：<s data-bind="text:line_info.days"></s>天</span>
-              <span>上船地点：<s data-bind="text:line_info.departure_city"></s></span>
-              <span>下船地点：<s data-bind="text:line_info.arrival_city"></s></span>
+              订单总价：&#165;<span data-bind="text:total.total_money"></span>
+                结算价：&#165;<span data-bind="text:total.calc_money"></span>
+                  返佣：&#165;<span data-bind="text:total.return_money"></span>
               </p>
             </div> 
             <div class="block">
-              <h3 class="gray-title">航线信息</h3>
-              <div id="line_info">
-                <table class="table-b2">
-                  <thead>
-                    <tr class="thead">
-                      <th style="border-left:0">航线信息名称</th> 
-                      <th>所属邮轮</th>
-                      <th>所属航次</th>
-                      <th>订单总价</th>
-                      <th style="border-right:0">返佣</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                  <tr>
-                    <td data-bind="text:line_info.line_name"></td>
-                    <td data-bind="text:line_info.cruise_name"></td>
-                    <td data-bind="text:line_info.cruise_id"></td>
-                    <td data-bind="text:total.total_money"></td>
-                    <td data-bind="text:total.return_money"></td>
-                  </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
+        <h3 class="gray-title">航线信息</h3>
+        <div id="line_info">
+          <table class="table-b2">
+            <thead>
+              <tr class="thead">
+                <th style="border-left:0">航线信息名称</th> 
+                <th>出发日期</th>
+                <th>所属邮轮</th>
+                <th>所属航次</th>
+                <th>天数</th>
+                <th>上船地点</th>
+                <th style="border-right:0">下船地点</th>
+              </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td data-bind="text:line_info.line_name"></td>
+              <td data-bind="text:line_info.departure_date"></td>
+              <td data-bind="text:line_info.cruise_name"></td>
+              <td data-bind="text:line_info.cruise_id"></td>
+              <td data-bind="text:line_info.days"></td>
+              <td data-bind="text:line_info.departure_city"></td>
+              <td data-bind="text:line_info.arrival_city"></td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
             <div class="block">
               <h3 class="gray-title">房型信息</h3>
               <div id="room_info">
@@ -191,6 +194,32 @@
                 </script>
               </div>
             </div>
+
+            <div class="block">
+              <h3 class="gray-title">特惠信息</h3>
+              <div id="others_info">
+                <table class="table-b2">
+                  <thead>
+                    <tr class="thead">
+                      <th style="border-left:0">名称</th> 
+                      <th>单价</th>
+                      <th>份数</th>
+                      <th style="border-right:0">小计</th>
+                    </tr>
+                  </thead>
+                  <tbody data-bind="source:discount" data-template="discount_info_tmpl"></tbody>
+                </table> 
+                <script type="text/template" id="discount_info_tmpl">
+                  <tr>
+                    <td>#= name #</td>
+                    <td>#= price #</td>
+                    <td>#= count #</td>
+                    <td>#= count*price #</td>
+                  </tr>
+                </script>
+              </div>
+            </div>
+
 
             <div class="block">
               <h3 class="gray-title">乘客信息</h3>

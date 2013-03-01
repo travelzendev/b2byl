@@ -182,7 +182,15 @@ $(function(){
                 window.order_info_detail = {
                     order_num:'YK25126516515151',
                     selected:false,
-                    line_name:'丽星邮轮处女星号新加坡-槟城-普吉岛五天四晚',
+                    line_info:{
+                        line_name:'"歌诗达维多利亚号"新加坡、马来西亚豪华畅游6日游',
+                        departure_date:'2012-10-10',
+                        days:3,
+                        departure_city:'上海',
+                        arrival_city:'上海',
+                        cruise_name:'N250',
+                        cruise_id:'N250',
+                    },
                     cabin_count:3,
                     psr_count:5,
                     departure_date:'2012-01-05',
@@ -197,8 +205,22 @@ $(function(){
                     pay_type:'支付宝',
                     pay_status:'已支付',
                     pay_account:'20120010231',
-                    book_type:'网上预订'
+                    book_type:'网上预订',
+                    source:[{
+                        count: 2,
+                        name: "标准9",
+                        price: 1000
+                    },{
+                        count: 1,
+                        name: "儿童保险",
+                        price: 134
+                    },{
+                        count: 1,
+                        name: "港务费、税费、小费",
+                        price: 154
+                    }]
                 };
+
 
                 //cgs13.html
                 window.order_info_psr_stzl = {
@@ -235,25 +257,25 @@ $(function(){
                             }]
                         }]},
                         {
-                        cabin_type:'内舱房',
-                        room_type:[{
-                            room:'标准9',
-                            order:[{
-                                real:1,
-                                passenger_info:[{
-                                    psr_birth:"1982/12/12",
-                                    psr_gender: "male",
-                                    psr_id: 1,
-                                    psr_insurance: 1,
-                                    psr_name: "CCCC",
-                                    psr_visa: 1,
-                                    psr_visanumber: "333A",
-                                    psr_type:'欧美在职人员',
-                                    material:[["身份证",1],["户口本复印件",1],['汇款截图',0]]
-                                }],
-                                room_number:"随机"
-                            }]
-                        }]},
+                            cabin_type:'内舱房',
+                            room_type:[{
+                                room:'标准9',
+                                order:[{
+                                    real:1,
+                                    passenger_info:[{
+                                        psr_birth:"1982/12/12",
+                                        psr_gender: "male",
+                                        psr_id: 1,
+                                        psr_insurance: 1,
+                                        psr_name: "CCCC",
+                                        psr_visa: 1,
+                                        psr_visanumber: "333A",
+                                        psr_type:'欧美在职人员',
+                                        material:[["身份证",1],["户口本复印件",1],['汇款截图',0]]
+                                    }],
+                                    room_number:"随机"
+                                }]
+                            }]},
                     ]
                 };
 
@@ -288,23 +310,23 @@ $(function(){
                             }]
                         }]},
                         {
-                        cabin_type:'内舱房',
-                        room_type:[{
-                            room:'标准9',
-                            order:[{
-                                real:1,
-                                passenger_info:[{
-                                    psr_birth:"1982/12/12",
-                                    psr_gender: "male",
-                                    psr_id: 1,
-                                    psr_insurance: 0,
-                                    psr_name: "AAAAAAAAAA",
-                                    psr_visa: "1",
-                                    psr_visanumber: "333A",
-                                }],
-                                room_number:"随机"
-                            }]
-                        }]},
+                            cabin_type:'内舱房',
+                            room_type:[{
+                                room:'标准9',
+                                order:[{
+                                    real:1,
+                                    passenger_info:[{
+                                        psr_birth:"1982/12/12",
+                                        psr_gender: "male",
+                                        psr_id: 1,
+                                        psr_insurance: 0,
+                                        psr_name: "AAAAAAAAAA",
+                                        psr_visa: "1",
+                                        psr_visanumber: "333A",
+                                    }],
+                                    room_number:"随机"
+                                }]
+                            }]},
                     ]
                 };
 
@@ -476,8 +498,8 @@ $(function(){
                     head.js('../js/cgs8.js');
                 }
 
-                if($('.mo-cgs9').length){
-                    head.js('../js/cgs9.js');
+                if($('.mo-cgs10').length){
+                    head.js('../js/cgs10.js');
                 }
 
                 if($('.mo-cgs12').length){

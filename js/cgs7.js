@@ -1,54 +1,6 @@
 head.ready(function(){
 
-    var submited = store.get('cgs_submited_data');
-
-    var windows = $("#window");
-    var kendo_window = windows.kendoWindow({
-        width:'500px',
-        modal:true,
-        visible:false,
-        open:function(){
-            // show_mask();
-        },
-        close:function(){
-            // hide_mask();
-        }
-    }).data("kendoWindow").center();
-
-    function show_mask(){
-        $('body').append('<div id="popmask"></div>').addClass('flowhidden');
-        $('html').addClass('flowhidden');
-    }
-
-    function hide_mask(){
-        $('#popmask').remove();
-        $('body').removeClass('flowhidden');
-        $('html').removeClass('flowhidden');
-    }
-
-    $("body").delegate('.upload_attachment',"click", function(e) {
-        e.preventDefault();
-        var tpl = kendo.template($('#upload_attachment_window').html());
-        windows.html(tpl);
-        kendo_window.title("上传附件");
-        kendo_window.open();
-    });
-
-    $("body").delegate('.upload_certificate',"click", function(e) {
-        e.preventDefault();
-        var tpl = kendo.template($('#upload_certificate_window').html());
-        windows.html(tpl);
-        kendo_window.title("上传汇款凭证");
-        kendo_window.open();
-    });
-
-    $("body").delegate('.refund',"click", function(e) {
-        e.preventDefault();
-        var tpl = kendo.template($('#refund_window').html());
-        windows.html(tpl);
-        kendo_window.title("申请退款");
-        kendo_window.open();
-    });
+    var submited = store.get('order_submited');
 
     kendo.init('#query_block');
 
@@ -135,6 +87,55 @@ head.ready(function(){
         //     refresh: true,
         //     pageSizes: true
         // },
+    });
+
+
+    var windows = $("#window");
+    var kendo_window = windows.kendoWindow({
+        width:'500px',
+        modal:true,
+        visible:false,
+        open:function(){
+            // show_mask();
+        },
+        close:function(){
+            // hide_mask();
+        }
+    }).data("kendoWindow").center();
+
+    function show_mask(){
+        $('body').append('<div id="popmask"></div>').addClass('flowhidden');
+        $('html').addClass('flowhidden');
+    }
+
+    function hide_mask(){
+        $('#popmask').remove();
+        $('body').removeClass('flowhidden');
+        $('html').removeClass('flowhidden');
+    }
+
+    $("body").delegate('.upload_attachment',"click", function(e) {
+        e.preventDefault();
+        var tpl = kendo.template($('#upload_attachment_window').html());
+        windows.html(tpl);
+        kendo_window.title("上传附件");
+        kendo_window.open();
+    });
+
+    $("body").delegate('.upload_certificate',"click", function(e) {
+        e.preventDefault();
+        var tpl = kendo.template($('#upload_certificate_window').html());
+        windows.html(tpl);
+        kendo_window.title("上传汇款凭证");
+        kendo_window.open();
+    });
+
+    $("body").delegate('.refund',"click", function(e) {
+        e.preventDefault();
+        var tpl = kendo.template($('#refund_window').html());
+        windows.html(tpl);
+        kendo_window.title("申请退款");
+        kendo_window.open();
     });
 
 });

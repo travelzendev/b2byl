@@ -92,160 +92,151 @@
   <div class="content area">
     <div class="mo-cgs8 clearfix">
       <div class="xblock">
-        <a href="cgs7.html">&laquo;返回上一步</a>
-        <a href="" class="k-button">旅客资料</a> 
-        <a href="" class="k-button">实体资料</a> 
-        <a href="" class="k-button">账单</a> 
-        <a href="" class="k-button">取消订单</a> 
-        <a href="" class="k-button">上传汇款凭证</a> 
-        <a href="" class="k-button">上传附件</a> 
-        <a href="" class="k-button">付款</a> 
-        <a href="" class="k-button">申请退款</a> 
-      </div>
-<div class="content-col">
-      <div class="block">
-        <h3 class="gray-title">订单信息</h3>
-        <div id="order_info">
-          <div class="col col1">
+          <a href="cgs12.html" class="k-button">旅客资料</a> 
+          <a href="cgs13.html" class="k-button">实体资料</a> 
+          <a href="cgs11.html" class="k-button">查看账单</a> 
+          <a href="" class="k-button">取消订单</a> 
+          <a href="" class="k-button upload_certificate">提交汇款信息</a>
+          <a href="" class="k-button upload_attachment">上传附件</a>
+          <a href="cgs10.html" class="k-button">付款</a> 
+          <a href="" class="k-button refund">申请退款</a>
+        </div>
+      <div class="content-col">
+        <div class="block">
+          <h3 class="gray-title">订单信息</h3>
+          <div id="order_info">
+            <div class="col col1">
+              <div class="row">
+                <span class="label">订单号</span> 
+                <span class="text" data-bind="text:order_num"></span>
+              </div> 
+              <div class="row">
+                <span class="label">预订日期</span> 
+                <span class="text" data-bind="text:book_date"></span>
+              </div> 
+              <div class="row">
+                <span class="label">订单状态</span> 
+                <span class="text" data-bind="text:order_status"></span>
+              </div> 
+              <div class="row">
+                <span class="label">订单总价</span> 
+                &#165;<span data-bind="text:total.total_money"></span>
+              </div> 
+              <div class="row">
+                <span class="label">订单结算价</span> 
+                &#165;<span data-bind="text:total.calc_money"></span>
+              </div> 
+            </div>
+            <div class="col col2">
+              <div class="row">
+                <span class="label">支付方式</span> 
+                <span class="text" data-bind="text:pay_type"></span>
+              </div> 
+              <div class="row">
+                <span class="label">支付状态</span> 
+                <span class="text" data-bind="text:pay_status"></span>
+              </div> 
+              <div class="row">
+                <span class="label">支付帐号</span> 
+                <span class="text" data-bind="text:pay_account"></span>
+              </div> 
+              <div class="row">
+                <span class="label">预订方式</span> 
+                <span class="text" data-bind="text:book_type"></span>
+              </div> 
+              <div class="row">
+                <span class="label">返佣</span> 
+                &#165;<span data-bind="text:total.return_money"></span>
+              </div> 
+            </div>
+          </div>
+        </div>
+        <div class="block clearfix">
+          <h3 class="gray-title">退款信息</h3>
+          <div id="refund_info" class="">
             <div class="row row1">
-              <span class="label">邮轮订单号</span> 
-              <span class="text" data-bind="text:order_info_detail.order_num"></span>
-            </div> 
+              <span class="label">退票：</span> 
+              <span data-bind="text:refund_info.return_ticket"></span>
+            </div>
             <div class="row row2">
-              <span class="label">预订日期</span> 
-              <span class="text" data-bind="text:order_info_detail.book_date"></span>
-            </div> 
-            <div class="row row3">
-              <span class="label">订单状态</span> 
-              <span class="text" data-bind="text:order_info_detail.order_status"></span>
-            </div> 
-          </div>
-          <div class="col col2">
+              <span class="label">退回原因：</span> 
+              <span data-bind="text:refund_info.reason"></span>
+            </div>
             <div class="row row1">
-              <span class="label">支付方式</span> 
-              <span class="text" data-bind="text:order_info_detail.pay_type"></span>
-            </div> 
+              <span class="label">退回金额：</span> 
+              <span data-bind="text:refund_info.money"></span>
+            </div>
+
+            <div class="row row1">
+              <span class="label">退回说明：</span> 
+              <span data-bind="text:refund_info.remark"></span>
+            </div>
+          </div>
+          <div id="refund_status" class="">
+            <h5>处理结果</h5>
+            <div class="row row1">
+              <span class="label">结果：</span> 
+              <span class="text" data-bind="text:refund_info.status.result"></span>
+            </div>
             <div class="row row2">
-              <span class="label">支付状态</span> 
-              <span class="text" data-bind="text:order_info_detail.pay_status"></span>
-            </div> 
+              <span class="label">退回金额：</span> 
+              <span class="text" data-bind="text:refund_info.status.money"></span>
+            </div>
             <div class="row row3">
-              <span class="label">支付帐号</span> 
-              <span class="text" data-bind="text:order_info_detail.pay_account"></span>
-            </div> 
-            <div class="row row3">
-              <span class="label">预订方式</span> 
-              <span class="text" data-bind="text:order_info_detail.book_type"></span>
-            </div> 
+              <span class="label">备注：</span> 
+              <span class="text" data-bind="text:refund_info.status.remark"></span>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="block clearfix">
-        <h3 class="gray-title">退款信息</h3>
-        <div id="refund_info" class="">
-          <div class="row row1">
-            <span class="label">退票：</span> 
-            <span data-bind="text:refund_info.return_ticket"></span>
+        <div class="block">
+          <h3 class="gray-title">航线信息</h3>
+          <div id="line_info">
+            <table class="table-b2">
+              <thead>
+                <tr class="thead">
+                  <th style="border-left:0">航线信息名称</th> 
+                  <th>出发日期</th>
+                  <th>所属邮轮</th>
+                  <th>所属航次</th>
+                  <th>天数</th>
+                  <th>上船地点</th>
+                  <th style="border-right:0">下船地点</th>
+                </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <td data-bind="text:line_info.line_name"></td>
+                <td data-bind="text:line_info.departure_date"></td>
+                <td data-bind="text:line_info.cruise_name"></td>
+                <td data-bind="text:line_info.cruise_id"></td>
+                <td data-bind="text:line_info.days"></td>
+                <td data-bind="text:line_info.departure_city"></td>
+                <td data-bind="text:line_info.arrival_city"></td>
+              </tr>
+              </tbody>
+            </table>
           </div>
-          <div class="row row2">
-            <span class="label">退回原因：</span> 
-            <span data-bind="text:refund_info.reason"></span>
-          </div>
-          <div class="row row1">
-            <span class="label">退回金额：</span> 
-            <span data-bind="text:refund_info.money"></span>
-          </div>
+        </div>
 
-          <div class="row row1">
-            <span class="label">退回说明：</span> 
-            <span data-bind="text:refund_info.remark"></span>
+        <div class="block">
+          <h3 class="gray-title">房型信息</h3>
+          <div id="room_info">
+            <table class="table-b2">
+              <thead>
+                <tr class="thead">
+                  <th style="border-left:0">房型</th> 
+                  <th>介绍</th>
+                  <th>舱位名称</th>
+                  <th>舱位价格</th>
+                  <th>房间数量</th>
+                  <th style="border-right:0">小计</th>
+                </tr>
+              </thead>
+              <tbody data-bind="source:room_info" data-template="room_info_tmpl"></tbody>
+            </table> 
           </div>
-        </div>
-        <div id="refund_status" class="">
-          <h5>处理结果</h5>
-          <div class="row row1">
-            <span class="label">结果：</span> 
-            <span class="text" data-bind="text:refund_info.status.result"></span>
-          </div>
-          <div class="row row2">
-            <span class="label">退回金额：</span> 
-            <span class="text" data-bind="text:refund_info.status.money"></span>
-          </div>
-          <div class="row row3">
-            <span class="label">备注：</span> 
-            <span class="text" data-bind="text:refund_info.status.remark"></span>
-          </div>
-        </div>
-      </div>
-      <div class="block">
-        <h3 class="gray-title">航线信息</h3>
-        <div id="line_info">
-          <table class="table-b2">
-            <thead>
-              <tr class="thead">
-                <th style="border-left:0">航线信息名称</th> 
-                <th>所属邮轮</th>
-                <th>所属航次</th>
-                <th>订单总价</th>
-                <th style="border-right:0">返佣</th>
-              </tr>
-            </thead>
-            <tbody>
-            <tr>
-              <td data-bind="text:line_info.line_name"></td>
-              <td data-bind="text:line_info.cruise_name"></td>
-              <td data-bind="text:line_info.cruise_id"></td>
-              <td data-bind="text:total.total_money"></td>
-              <td data-bind="text:total.return_money"></td>
-            </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-      <div class="block">
-        <h3 class="gray-title">其他费用</h3>
-        <div id="others_info">
-          <table class="table-b2">
-            <thead>
-              <tr class="thead">
-                <th style="border-left:0">名称</th> 
-                <th>单价</th>
-                <th>份数</th>
-                <th style="border-right:0">小计</th>
-              </tr>
-            </thead>
-            <tbody data-bind="source:others_info" data-template="others_info_tmpl"></tbody>
-          </table> 
-          <script type="text/template" id="others_info_tmpl">
-            <tr>
-                    <td>#= name #</td>
-                    <td>#= price #</td>
-                    <td>#= count #</td>
-                    <td>#= count*price #</td>
-                  </tr>
-          </script>
-        </div>
-      </div>
-
-      <div class="block">
-        <h3 class="gray-title">房型信息</h3>
-        <div id="room_info">
-          <table class="table-b2">
-            <thead>
-              <tr class="thead">
-                <th style="border-left:0">房型</th> 
-                <th>介绍</th>
-                <th>舱位名称</th>
-                <th>舱位价格</th>
-                <th>房间数量</th>
-                <th style="border-right:0">小计</th>
-              </tr>
-            </thead>
-            <tbody data-bind="source:room_info" data-template="room_info_tmpl"></tbody>
-          </table> 
-        </div>
-        <script type="text/template" id="room_info_tmpl">
-          # var len= room_type.length; for (var i=0;i<len; i++  ) { #
+          <script type="text/template" id="room_info_tmpl">
+            # var len= room_type.length; for (var i=0;i<len; i++  ) { #
                   # var item = room_type[i] #
                 <tr>
                     <td>#= item.room #</td>
@@ -256,44 +247,87 @@
                     <td>#= item.roomcount*item.price #</td>
                   </tr>
                 # } #
-        </script>
-      </div>
-      <div class="block">
-        <h3 class="gray-title">附件</h3>
-        <div id="attachment_info"></div>
-      </div>
-      <div class="block">
-        <h3 class="gray-title">备注</h3>
-        <div class="block-body">
-          <p class="remark" data-bind="text:additional_info.remark"></p>
+          </script>
         </div>
-      </div>
-      <div class="block" id="contact_info">
-        <h3 class="gray-title">联系人信息</h3> 
-        <div class="block-body">
-          <p class="row"><span class="label">姓&#12288;&#12288;名：</span><span class="text"><input type="text"  data-bind="value:contact_info.name"></span>
-          <span class="label">电&#12288;&#12288;话：</span><span class="text"><input type="text"  data-bind="value:contact_info.phonenumber"></span>
-          <span class="label">邮&#12288;&#12288;箱：</span><span class="text"><input type="text"  data-bind="value:contact_info.email"></span>
-          </p>
+
+        <div class="block">
+          <h3 class="gray-title">其他费用</h3>
+          <div id="others_info">
+            <table class="table-b2">
+              <thead>
+                <tr class="thead">
+                  <th style="border-left:0">名称</th> 
+                  <th>单价</th>
+                  <th>份数</th>
+                  <th style="border-right:0">小计</th>
+                </tr>
+              </thead>
+              <tbody data-bind="source:others_info" data-template="others_info_tmpl"></tbody>
+            </table> 
+            <script type="text/template" id="others_info_tmpl">
+              <tr>
+                    <td>#= name #</td>
+                    <td>#= price #</td>
+                    <td>#= count #</td>
+                    <td>#= count*price #</td>
+                  </tr>
+            </script>
+          </div>
         </div>
-      </div>
-      <div class="block" id="invoice_info">
-        <h3 class="gray-title">发票信息</h3> 
-        <div class="block-body">
-          <p class="row"><span class="label">发票抬头：</span><span class="text"><input type="text"  data-bind="value:invoice_info.title"></span></p>
-          <p class="row"><span class="label">发票明细：</span><span class="text"><input type="text"  data-bind="value:invoice_info.detail"></span></p>
-          <p class="row"><span class="label">特殊要求：</span><span class="text"><input type="text"  data-bind="value:invoice_info.special"></span></p>
+        <div class="block">
+          <h3 class="gray-title">特惠信息</h3>
+          <div id="others_info">
+            <table class="table-b2">
+              <thead>
+                <tr class="thead">
+                  <th style="border-left:0">名称</th> 
+                  <th>单价</th>
+                  <th>份数</th>
+                  <th style="border-right:0">小计</th>
+                </tr>
+              </thead>
+              <tbody data-bind="source:discount" data-template="discount_info_tmpl"></tbody>
+            </table> 
+            <script type="text/template" id="discount_info_tmpl">
+              <tr>
+                    <td>#= name #</td>
+                    <td>#= price #</td>
+                    <td>#= count #</td>
+                    <td>#= count*price #</td>
+                  </tr>
+            </script>
+          </div>
         </div>
-      </div>
-      <div class="block" id="delivery_info">
-        <h3 class="gray-title">配送信息</h3> 
-        <div class="block-body">
-          <div class="clearfix row1">
-            <p class="row"><span class="label">配送方式：</span><span class="text"><select   data-bind="value:delivery_info.type" style="width:100px;">
-                <option value="">快递</option> 
-                <option value="">快递</option> 
-                <option value="">快递</option> 
-              </select></p>
+
+        <div class="block">
+          <h3 class="gray-title">备注</h3>
+          <div class="block-body">
+            <p class="remark" data-bind="text:remark"></p>
+          </div>
+        </div>
+        <div class="block" id="contact_info">
+          <h3 class="gray-title">联系人信息</h3> 
+          <div class="block-body">
+            <p class="row"><span class="label">姓&#12288;&#12288;名：</span><span class="text"><input type="text"  data-bind="value:contact_info.name"></span>
+            <span class="label">电&#12288;&#12288;话：</span><span class="text"><input type="text"  data-bind="value:contact_info.phonenumber"></span>
+            <span class="label">邮&#12288;&#12288;箱：</span><span class="text"><input type="text"  data-bind="value:contact_info.email"></span>
+            </p>
+          </div>
+        </div>
+        <div class="block" id="invoice_info">
+          <h3 class="gray-title">发票信息</h3> 
+          <div class="block-body">
+            <p class="row"><span class="label">发票抬头：</span><span class="text"><input type="text"  data-bind="value:invoice_info.title"></span></p>
+            <p class="row"><span class="label">发票明细：</span><span class="text"><input type="text"  data-bind="value:invoice_info.detail"></span></p>
+            <p class="row"><span class="label">特殊要求：</span><span class="text"><input type="text"  data-bind="value:invoice_info.special"></span></p>
+          </div>
+        </div>
+        <div class="block" id="delivery_info">
+          <h3 class="gray-title">配送信息</h3> 
+          <div class="block-body">
+            <div class="clearfix row1">
+              <p class="row"><span class="label">配送方式：</span><span class="text" data-bind="text:delivery_info.type" style="width:100px;"></span>
+              </p>
               <p class="row"><span class="label">配送地址：</span><span class="text"><input type="text"  data-bind="value:delivery_info.address"></span></p>
             </div>
             <div class="clearfix row2">
@@ -303,24 +337,142 @@
               </p>
             </div>
           </div>
-        </div>
+        </div>
 
+        <div class="block">
+          <h3 class="gray-title">附件</h3>
+          <div id="attachment_info"></div>
+        </div>
 
         <div class="xblock">
-          <a href="">&laquo;返回上一步</a>
-          <a href="" class="k-button">旅客资料</a> 
-          <a href="" class="k-button">实体资料</a> 
-          <a href="" class="k-button">账单</a> 
+          <a href="cgs12.html" class="k-button">旅客资料</a> 
+          <a href="cgs13.html" class="k-button">实体资料</a> 
+          <a href="cgs11.html" class="k-button">查看账单</a> 
           <a href="" class="k-button">取消订单</a> 
-          <a href="" class="k-button">上传汇款凭证</a> 
-          <a href="" class="k-button">上传附件</a> 
-          <a href="" class="k-button">付款</a> 
-          <a href="" class="k-button">申请退款</a> 
+          <a href="" class="k-button upload_certificate">提交汇款信息</a>
+          <a href="" class="k-button upload_attachment">上传附件</a>
+          <a href="cgs10.html" class="k-button">付款</a> 
+          <a href="" class="k-button refund">申请退款</a>
         </div>
-      </div></div>
-    </div>
+    </div></div>
   </div>
-  <i class="toggle-arrow arrow4"></i>
-  <script type="text/javascript" src="../js/youlun.js"></script>
-  </body>
-  </html>
+</div>
+<div id="window"></div>
+<script type="text/template" id="upload_attachment_window">
+  <div class="row row1">
+       <input id="" name="" type="file" /> 
+    </div>
+    <div class="row row2">
+        附件格式为：.doc; .docx;.xls; .xlsx;.txt; .jpg;.bmp;.png;.gif
+    </div>
+    <div align="right" class="row row3">
+    <input type="submit" class="k-button" value="确定" />
+    </div>
+</script>
+<script type="text/template" id="upload_certificate_window">
+  <table class="table-b6">
+        <tr>
+          <th>充值金额：</th>
+          <td>
+            <input id="" name="" type="text" class="k-input" /> 
+          </td>
+        </tr>
+        <tr>
+          <th>确认充值金额：</th>
+          <td>
+            <input id="" name="" type="text" class="k-input" /> 
+          </td>
+        </tr>
+        <tr>
+          <th>充值金额大写：</th>
+          <td>
+            <input id="" name="" type="text" class="k-input" /> 
+          </td>
+        </tr>
+        <tr>
+          <th>汇款人姓名：</th>
+          <td>
+            <input id="" name="" type="text" class="k-input" /> 
+          </td>
+        </tr>
+        <tr>
+          <th>收款银行账户：</th>
+          <td>
+            <input id="" name="" type="text" class="k-input" /> 
+          </td>
+        </tr>
+        <tr>
+          <th>凭单号或流水支付号：</th>
+          <td>
+            <input id="" name="" type="text" class="k-input" /> 
+          </td>
+        </tr>
+        <tr>
+          <th>说明：</th>
+          <td>
+            <textarea id="" class="k-textbox" name="" style="width:300px;height:40px;"></textarea>
+          </td>
+        </tr>
+        <tr>
+          <th></th>
+          <td>
+          <input type="submit" value="提交" class="k-button" />
+          <input type="reset" value="重置" class="k-button" />
+          </td>
+        </tr>
+      </table>
+</script>
+<script type="text/template" id="refund_window">
+  <table class="table-b6">
+    <tr>
+      <th>退票<b>*</b>：</th> 
+      <td>
+        <label for="xxx">
+          <input id="" name="xxx" type="radio" /> 
+          需要
+        </label>
+        <label for="xxx">
+          <input id="" name="xxx" type="radio" /> 
+          不需要
+        </label>
+      </td>
+    </tr>
+    <tr>
+    <th>退回原因<b>*</b>：</th>
+      <td>
+<select>
+<option selected="" value="请选择">请选择</option>
+<option value="退船票">退船票</option>
+<option value="签证费">签证费</option>
+<option value="保险费">保险费</option>
+<option value="港务费">港务费</option>
+<option value="其它">其它</option>
+</select>
+      </td>
+    </tr>
+    <tr>
+    <th>退回金额 <b>*</b>：</th>
+      <td>
+     <input id="" class="k-input" name="" type="text" /> 
+      </td>
+    </tr>
+    <tr>
+      <th>退回说明：</th>
+      <td>
+        <textarea id="" class="k-textbox" name="" style="width:300px;height:40px;"></textarea> 
+      </td>
+    </tr>
+    <tr>
+      <th></th>
+      <td>
+        <input type="button" class="k-button" value="撤销" />
+        <input type="button" class="k-button" value="取消" />
+        <input type="button" class="k-button" value="确定" />
+      </td>
+    </tr>
+    </table>
+</script>
+<i class="toggle-arrow arrow4"></i>
+<script type="text/javascript" src="../js/youlun.js"></script>
+</body>
+</html>

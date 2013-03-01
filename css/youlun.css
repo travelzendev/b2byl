@@ -937,7 +937,7 @@ h5 {
     width: 60px;
     text-align: right; }
 
-.mo-cgs5 .table-b2 .thead th, .mo-cgs8 .table-b2 .thead th {
+.mo-cgs5 .table-b2 .thead th, .mo-cgs8 .table-b2 .thead th, .mo-cgs10 .table-b2 .thead th {
   border-top: 0; }
 
 .total-fixed {
@@ -1306,11 +1306,11 @@ h5 {
 #window .row {
   padding: 5px 10px; }
 
-.mo-cgs10 .table {
+.mo-cgs9 .table {
   width: 500px; }
-.mo-cgs10 .thead {
+.mo-cgs9 .thead {
   background: #ddd; }
-.mo-cgs10 td, .mo-cgs10 th {
+.mo-cgs9 td, .mo-cgs9 th {
   padding: 5px;
   border: 1px solid #ccc; }
 
@@ -1456,3 +1456,6 @@ center.note {
   background-color: #c00;
   padding: 3px;
   color: #fff; }
+
+.mo-cgs10 .row {
+  margin-bottom: 10px; }
