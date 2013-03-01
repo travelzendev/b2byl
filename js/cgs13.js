@@ -3,7 +3,7 @@ head.ready(function(){
     $.extend(order_info_psr_stzl, {
         count_psr:0,
         count_visa:0,
-        count_insurance:0,
+        count_insurance:0
     });
 
     var viewModel = kendo.observable(order_info_psr_stzl);

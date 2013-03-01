@@ -10,7 +10,7 @@ $(function(){
                 window.contact_info={
                     name:'阿斯',
                     phonenumber:'13800',
-                    email:'sf@163.com',
+                    email:'sf@163.com'
                 };
 
                 window.delivery_info = {
@@ -24,7 +24,7 @@ $(function(){
                 window.invoice_info = {
                     title:'123',
                     detail:'fa fdksal',
-                    special: 'fdsal fdksajl',
+                    special: 'fdsal fdksajl'
                 };
 
                 //运营商数据
@@ -39,7 +39,7 @@ $(function(){
                 window.zlfl_data = [{
                     type:'在职',
                     count:3,
-                    detail:'身份证复印件',
+                    detail:'身份证复印件'
                 }];
                 //模板及样图管理
                 window.moban_data = [{
@@ -107,7 +107,7 @@ $(function(){
                     departure_time:'19:30:20',
                     detail:'几日xxx',
                     remark:'xxx',
-                    picture:'http://b2b.10106266.com/img/dt/logo.png',
+                    picture:'http://b2b.10106266.com/img/dt/logo.png'
                 }];
 
                 //航次信息
@@ -126,7 +126,7 @@ $(function(){
                     other_charges:2000,
                     pay_all:true,
                     published:false,
-                    cabin_priced:true,
+                    cabin_priced:true
                 }];
 
                 //客舱价格
@@ -139,7 +139,7 @@ $(function(){
                     price:4000,
                     coefficient:1.5,
                     can_be_added:true,
-                    left_tickets:6,
+                    left_tickets:6
                 }];
 
                 //舱型信息
@@ -151,7 +151,7 @@ $(function(){
                     type:'其他类型公司',
                     shortname:'fhq',
                     position:'上海长宁区',
-                    rebate:4,
+                    rebate:4
                 }];
 
 
@@ -164,7 +164,7 @@ $(function(){
                     cabin:'xxx舱',
                     sold:10,
                     unpayment:10,
-                    left:1,
+                    left:1
                 }];
 
                 window.refund_info = {
@@ -343,7 +343,7 @@ $(function(){
                     order_status:2,
                     psrinfo_status:'齐全',
                     material_status:'缺资料',
-                    attachment_count:2,
+                    attachment_count:2
                 },
                 {
                     selected:false,
@@ -358,7 +358,7 @@ $(function(){
                     order_status:4,
                     psrinfo_status:'齐全',
                     material_status:'缺资料',
-                    attachment_count:2,
+                    attachment_count:2
                 },
                 {
                     selected:false,
@@ -373,7 +373,7 @@ $(function(){
                     order_status:0,
                     psrinfo_status:'齐全',
                     material_status:'缺资料',
-                    attachment_count:2,
+                    attachment_count:2
                 }];
 
                 window.cgs_data={
@@ -386,7 +386,7 @@ $(function(){
                         departure_city:'上海',
                         arrival_city:'上海',
                         cruise_name:'N250',
-                        cruise_id:'N250',
+                        cruise_id:'N250'
                     },
                     room_info:[
                         {
