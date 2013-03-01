@@ -189,7 +189,7 @@ $(function(){
                         departure_city:'上海',
                         arrival_city:'上海',
                         cruise_name:'N250',
-                        cruise_id:'N250',
+                        cruise_id:'N250'
                     },
                     cabin_count:3,
                     psr_count:5,

@@ -117,7 +117,7 @@
                 # $.each(room_info.room_type,function(idx1,room){ #
                   # $.each(room.order,function(idx2,order){ #
                           <div class="psr_block"  data-ele="room_info[#=idx0#].room_type[#= idx1 #].order[#= idx2 #]">
-                            <div class="psr_title">#= room_info.cabin_type +' - '+ room.room +' - '+ order.room_number  # <span>#room_info.parent().parent().count_psr += order.real # 实际入住#= order.real  #人<span></div> 
+                            <div class="psr_title">#= room_info.cabin_type +' - '+ room.room +' - '+ order.room_number  # <span>#room_info.parent().parent().count_psr += order.real # 实际入住#= order.real  #人</span></div> 
 
                             <div data-template="passenger_info_tmpl" data-bind="source:room_info[#=idx0#].room_type[#= idx1 #].order[#= idx2 #].passenger_info" class="psr_body">
                             </div>
