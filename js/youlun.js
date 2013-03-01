@@ -275,7 +275,7 @@ $(function(){
                                     }],
                                     room_number:"随机"
                                 }]
-                            }]},
+                            }]}
                     ]
                 };
 
@@ -296,7 +296,7 @@ $(function(){
                                     psr_insurance: 0,
                                     psr_name: "AAAAAAAAAA",
                                     psr_visa: "1",
-                                    psr_visanumber: "333A",
+                                    psr_visanumber: "333A"
                                 },{
                                     psr_birth:"1982/12/12",
                                     psr_gender: "male",
@@ -304,7 +304,7 @@ $(function(){
                                     psr_insurance: 0,
                                     psr_name: "AAAAAAAAAA",
                                     psr_visa: "1",
-                                    psr_visanumber: "333A",
+                                    psr_visanumber: "333A"
                                 }],
                                 room_number:"随机"
                             }]
@@ -322,11 +322,11 @@ $(function(){
                                         psr_insurance: 0,
                                         psr_name: "AAAAAAAAAA",
                                         psr_visa: "1",
-                                        psr_visanumber: "333A",
+                                        psr_visanumber: "333A"
                                     }],
                                     room_number:"随机"
                                 }]
-                            }]},
+                            }]}
                     ]
                 };
 
