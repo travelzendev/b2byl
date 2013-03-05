@@ -32,20 +32,28 @@ $(function(){
                 //实体资料
                 window.stzl_data = [{
                     name:'身份证复印件',
-                    required: '必须',
+                    required: 1,
+                    detail:'行程结束后还有半年以上有效期，可接收电子护照。'
+                },{
+                    name:'学生证',
+                    required: 1,
+                    detail:'行程结束后还有半年以上有效期，可接收电子护照。'
+                },{
+                    name:'护照',
+                    required: 1,
                     detail:'行程结束后还有半年以上有效期，可接收电子护照。'
                 }];
                 //资料分类
                 window.zlfl_data = [{
-                    type:'在职',
-                    count:3,
-                    detail:'身份证复印件'
+                    name:'意大利在职',
+                    detail:'身份证,复印件,护照,学生证',
+                    count:4
                 }];
                 //模板及样图管理
                 window.moban_data = [{
                     name:'个人信息表',
                     moban:'httpddd.docx',
-                    yangtu:'xxx.jpg'
+                    picture:'xxx.jpg'
                 }];
                 //基础信息
                 window.jcxx_data = [{
