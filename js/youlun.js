@@ -3,6 +3,7 @@ $(function(){
             '../js/kendo.culture.zh-CHS.min.js',
             '../js/store.min.js',
             '../js/json2.min.js',
+            '../js/compat.js',
             '../js/jquery.ezpz_tooltip.min.js',
             function(){
                 kendo.culture('zh-CHS');
@@ -44,11 +45,14 @@ $(function(){
                     detail:'行程结束后还有半年以上有效期，可接收电子护照。'
                 }];
                 //资料分类
-                window.zlfl_data = [{
-                    name:'意大利在职',
-                    detail:'身份证,复印件,护照,学生证',
-                    count:4
-                }];
+                window.zlfl_data = {
+                    options:[{text:'身份证'},{text:'复印件'},{text:'学生证'},{text:'护照'}],
+                    data:[{
+                        name:'意大利在职',
+                        detail:[{text:'复印件'},{text:'学生证'}],
+                        count:2
+                    }]
+                };
                 //模板及样图管理
                 window.moban_data = [{
                     name:'个人信息表',

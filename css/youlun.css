@@ -1463,19 +1463,29 @@ center.note {
 .k-window textarea {
   resize: none; }
 
-#movetree .k-treeview-lines {
-  min-height: 100px; }
-#movetree .k-item {
-  padding-left: 0px; }
-#movetree button {
-  width: 30px;
-  font-family: arial;
-  font-size: 16px; }
-#movetree #col-m {
-  float: left; }
-#movetree .movetree-col {
-  float: left;
-  width: 100px;
-  height: 100px;
-  overflow-y: scroll;
-  border: 1px solid #ccc; }
+#movetree {
+  background: #fff;
+  margin-bottom: -16px;
+  margin-left: -60px; }
+  #movetree .k-treeview-lines {
+    min-height: 100px; }
+  #movetree .k-item {
+    padding-left: 0px; }
+  #movetree button {
+    width: 30px;
+    font-family: arial;
+    font-size: 16px; }
+  #movetree #col-m {
+    padding-top: 20px;
+    float: left; }
+  #movetree .movetree-col {
+    float: left;
+    width: 100px;
+    height: 100px; }
+    #movetree .movetree-col h3 {
+      height: 20px;
+      margin: 0;
+      font-size: 12px; }
+  #movetree #col1, #movetree #col2 {
+    overflow-y: scroll;
+    border: 1px solid #ccc; }
