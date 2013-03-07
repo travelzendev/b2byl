@@ -150,6 +150,139 @@
     </div>
   </div>
 </div>
+<script id="edit_toolbar" type="text/template">
+  <a class="k-button k-button-icontext k-grid-add" href="javascript:;"><span class="k-icon k-add"></span>新增</a>
+  <a class="k-button" id="hotmize" href="javascript:;">设为热门</a>
+  <a class="k-button" id="dehotmize" href="javascript:;">取消热门</a>
+</script>
+<script id="edit_button" type="text/template">
+<a class="k-button" href="yys9.html?id=${id}">行程维护</a>
+<a class="k-button" href="yys10.html?id=${id}">航次维护</a>
+
+        # if (published) { #
+        <b class='k-button unpub'>取消发布</b>
+        # }else{ #
+<a class="k-button k-button-icontext k-grid-edit" href="\#"><span class="k-icon k-edit"></span>编 辑</a>
+<a class="k-button k-button-icontext k-grid-delete" href="\#"><span class="k-icon k-delete"></span>删 除</a>
+        <b class='k-button pub'>发布</b> 
+        # } #
+</script>
+<script id="edit_template" type="text/template">
+  <div id="yys_edit_line">
+    <table class="table1">
+      <colgroup>
+        <col width="100" />
+        <col />
+        <col width="100" />
+        <col />
+      </colgroup>
+      <tr>
+        <th></th>
+        <td style="color:\#aaa">标题请参考：邮轮公司+邮轮名称 + 途经港口 + 行程天数</td>
+        <th></th>
+        <th></th>
+      </tr>
+      <tr>
+        <th>航线名称</th>
+        <td>
+          <input style="width:400px" type="text" class="k-input" /> 
+        </td>
+        <th>航线类型</th>
+        <td>
+          <select name="" data-source="[{name:'地中海'},{name:'东南亚'}]" data-text-field="name" data-value-field="name" data-role="dropdownlist"></select> 
+        </td>
+      </tr>
+
+    <tr>
+      <th>途径港口</th>
+      <td>
+          <input style="width:400px" type="text" class="k-input" /> 
+      </td>
+      <th>所属公司</th>
+      <td>
+          <select name="" data-source="[{name:'美服'},{name:'美服2'}]" data-text-field="name" data-value-field="name" data-role="dropdownlist"></select> 
+      </td>
+    </tr>
+
+    <tr>
+      <th>出发日期</th>
+      <td>
+          <input style="width:370px" type="text" id="departure_date_data" class="k-input" />
+          <input style="width:0px" data-role="datepicker" type="text" id="departure_date" class="k-input" /> 
+      </td>
+      <th>所属邮轮</th>
+      <td>
+          <select name="" data-source="[{name:'美服'},{name:'美服2'}]" data-text-field="name" data-value-field="name" data-role="dropdownlist"></select> 
+      </td>
+    </tr>
+    <tr>
+      <th>报名截止日期</th>
+      <td>
+     <input type="text" data-min="0" style="width:80px;" data-role="numerictextbox" data-format="\#" data-bind="value:order_last_date" class="k-input" /> 天 
+      </td>
+      <th>上传地点</th>
+      <td>
+          <select name="" data-source="[{name:'新加坡'},{name:'新加坡'}]" data-text-field="name" data-value-field="name" data-role="dropdownlist"></select> 
+      </td>
+    </tr>
+    <tr>
+      <th>行程天数</th>
+      <td>
+     <input type="text" data-min="0" style="width:80px;" data-role="numerictextbox" data-format="\#" data-bind="value:days" class="k-input" /> 天 
+      </td>
+      <th>下船地点</th>
+      <td>
+          <select name="" data-source="[{name:'新加坡'},{name:'新加坡'}]" data-text-field="name" data-value-field="name" data-role="dropdownlist"></select> 
+      </td>
+    </tr>
+    <tr>
+      <th>最低价格</th>
+      <td>
+     <input type="text" data-role="numerictextbox" data-min="0" style="width:80px;" data-format="￥\#" data-bind="value:min_price" class="k-input" /> 起 
+      </td>
+      <th>儿童年龄限制</th>
+      <td>
+     <input type="text" data-role="numerictextbox" data-min="0" style="width:80px;" data-format="\#" data-bind="value:chd_age_limit" class="k-input" /> 
+      </td>
+    </tr>
+    <tr>
+      <th>航线图片</th>
+      <td>
+           <input name="files" class="upload-files" type="file" />
+      </td>
+      <th></th>
+      <td></td>
+    </tr>
+    </table> 
+    <table class="table2">
+      <tr>
+        <td>注意事项（订舱政策）</td>
+        <td>签证须知（咨询问答）</td>
+      </tr>
+      <tr>
+        <td>
+          <textarea data-bind="" style="width:395px;" class="textarea" data-role="editor"></textarea> 
+        </td>
+        <td>
+          <textarea data-bind="" style="width:395px;" class="textarea" data-role="editor"></textarea> 
+        </td>
+      </tr>
+      <tr>
+        <td>费用包含（费用不包含）</td>
+        <td>推荐理由</td>
+      </tr>
+      <tr>
+        <td>
+          <textarea data-bind="" style="width:395px;" class="textarea" data-role="editor"></textarea> 
+        </td>
+        <td>
+          <textarea data-bind="" style="width:395px;" class="textarea" data-role="editor"></textarea> 
+        </td>
+      </tr>
+    </table>
+  </div>
+<a class="k-button k-button-icontext" href="javascript:;"><span class="k-icon k-i-search"></span>预 览</a>
+</script>
 <i class="toggle-arrow arrow4"></i>
 <script type="text/javascript" src="../js/youlun.js"></script>
 </body>

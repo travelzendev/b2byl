@@ -60,38 +60,67 @@ $(function(){
                     picture:'xxx.jpg'
                 }];
                 //基础信息
-                window.jcxx_data = [{
-                    name:'维多利亚',
-                    picture:'http://b2b.10106266.com/img/dt/logo.png',
-                    company:'歌诗达',
-                    rule:'fdslfdksal',
-                    remark:'xxx',
-                    id:111
-                }];
+                window.jcxx_data = {
+                    company_list:[{name:'歌诗达2'},{name:'歌诗达'}],
+                    source: [{
+                        name:'维多利亚',
+                        picture:'http://b2b.10106266.com/img/dt/logo.png',
+                        company:'歌诗达',
+                        rule:'fdslfdksal',
+                        remark:'xxx',
+                        url:'yys7.html'
+                    }]
+                };
                 //公司信息
                 window.company_data = [{
                     name:'歌诗达',
                     picture:'http://b2b.10106266.com/img/dt/logo.png',
                     remark:'fkdslafkdsl'
                 }];
+
                 //客舱信息
-                window.kcxx_data = [{
-                    cabin:'海景房',
-                    room:'标准1',
-                    room_id:'1',
-                    room_intro:'设备介绍：浴室，电锤，电话，电视',
-                    floor:'5~7层',
-                    acreage:'6.6~9.0',
-                    windows:'无',
-                    bed:'双床',
-                    price:5200,
-                    max:2
-                }];
+                window.kcxx_data ={
+                    cabin_data : [{id:1,name:'内舱房'},{id:2,name:'海景房'}],
+                    source:[{
+                        cabin:'海景房',
+                        room:'标准1',
+                        room_id:'1',
+                        room_intro:'设备介绍：浴室，电锤，电话，电视',
+                        picture:'http://b2b.10106266.com/img/dt/logo.png',
+                        floor:'5~7',
+                        acreage:'6.6~9.0',
+                        windows:'无',
+                        bed:'双床',
+                        price:5200,
+                        max:2
+                    }]
+                } ;
                 //航线信息
                 window.line_data = [{
                     id:1,
                     line_type:'东南亚',
                     line_name:'"歌诗达维多利亚号"新加坡、马来西亚豪华畅游6日游',
+                    departure_date:'2012-10-10,2012-10-11',
+                    via:'新加坡,吉隆坡,普吉岛',
+                    order_last_date:7,
+                    days:3,
+                    departure_city:'上海',
+                    arrival_city:'上海',
+                    cruise_name:'卡罗琳',
+                    company:'歌诗达',
+                    min_price:222,
+                    chd_age_limit:10,
+                    picture:'http://www.dd.png',
+                    provision_text:'xxx',
+                    qa_text:'xxx',
+                    fee_text:'xxx',
+                    recommendation_text:'xxx',
+                    hot:true,
+                    published:true
+                },{
+                    id:2,
+                    line_type:'东南亚22222',
+                    line_name:'2222222歌诗达维多利亚号"新加坡、马来西亚豪华畅游6日游',
                     departure_date:'2012-10-10,2012-10-11',
                     via:'新加坡,吉隆坡,普吉岛',
                     order_last_date:'7',
@@ -107,20 +136,24 @@ $(function(){
                     qa_text:'xxx',
                     fee_text:'xxx',
                     recommendation_text:'xxx',
-                    hot:true,
-                    published:true
+                    hot:false,
+                    published:false
                 }];
 
                 //行程信息
-                window.agenda_data = [{
+                window.agenda_data ={
+                    days:3,
+                    port_available:['新加坡','香港'],
+                    source:[{
                     day_num:1,
                     port:'新加坡',
-                    arrival_time:'12:50:20',
-                    departure_time:'19:30:20',
+                    arrival_time:'12:50',
+                    departure_time:'19:30',
                     detail:'几日xxx',
                     remark:'xxx',
                     picture:'http://b2b.10106266.com/img/dt/logo.png'
-                }];
+                }]
+                };
 
                 //航次信息
                 window.voyage_data=[{
@@ -153,9 +186,6 @@ $(function(){
                     can_be_added:true,
                     left_tickets:6
                 }];
-
-                //舱型信息
-                window.cabin_data = [{id:1,name:'内舱房'},{id:2,name:'海景房'}];
 
                 //采购商公司
                 window.cgsinfo_data = [{

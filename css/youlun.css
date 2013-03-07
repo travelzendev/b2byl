@@ -1303,6 +1303,9 @@ h5 {
 .flowhidden {
   overflow: hidden; }
 
+#window {
+  display: none; }
+
 #window .row {
   padding: 5px 10px; }
 
@@ -1457,6 +1460,11 @@ center.note {
   padding: 3px;
   color: #fff; }
 
+.hot-icon {
+  background-color: #f60;
+  padding: 3px;
+  color: #fff; }
+
 .mo-cgs10 .row {
   margin-bottom: 10px; }
 
@@ -1489,3 +1497,18 @@ center.note {
   #movetree #col1, #movetree #col2 {
     overflow-y: scroll;
     border: 1px solid #ccc; }
+
+#yys8-page .k-edit-form-container {
+  width: 800px; }
+
+#yys_edit_line {
+  margin-bottom: 20px; }
+  #yys_edit_line .table2 {
+    width: 100%; }
+    #yys_edit_line .table2 td, #yys_edit_line .table2 th {
+      text-align: left; }
+  #yys_edit_line .table1 td, #yys_edit_line .table1 th {
+    padding: 5px;
+    text-align: left; }
+  #yys_edit_line .table1 th {
+    text-align: right; }
