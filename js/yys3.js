@@ -58,6 +58,8 @@ head.ready(function(){
             }
         });
         remove.bind('click',function(){
+            removeSelected(tcol1);
+            removeSelected(tcol2);
             var sel = tcol1.select();
             var index = sel.index();
             if( sel.length ){
@@ -70,8 +72,10 @@ head.ready(function(){
         addall.bind('click',function(){
             tcol1.setDataSource(dataSource);
             tcol2.setDataSource(dataSource_null);
-            // o.model.detail.splice(0,o.model.detail.length);
-            // console.log(o.model.detail);
+            o.model.detail.splice(0,o.model.detail.length);
+            $.each(zlfl_data.options,function(i,e){
+                o.model.detail.push(e);
+            });
         });
         removeall.bind('click',function(){
             tcol2.setDataSource(dataSource);
