@@ -113,8 +113,9 @@
   <div class="content area">
     <div class="mo-yys10 clearfix">
       <div class="xblock">
-        <div class="block-body">
-          <div class="row">
+        <a href="">&laquo;返回上一页</a> 
+      </div>
+      <div class="xblock border-box">
             <span class="label">所属公司：</span> 
             <span class="text">
               xxxxx
@@ -127,16 +128,127 @@
             <span class="text">
               xxxxx
             </span>
-          </div>
-          <div class="row">
-            <a href="">&laquo;返回上一页</a> 
-          </div>
-        </div>
       </div>
       <div class="block" id="voyage_data"></div>
+    <div id="window">
+      <table class="table-b3">
+        <tr>
+          <th>团号</th>
+          <td>
+            <input type="text" class="k-input" /> 
+          </td>
+        </tr>
+        <tr>
+          <th>
+            开航日期 
+          </th>
+          <td>
+            <input type="text" class="datepicker" /> 
+          </td>
+        </tr>
+      </table>
+        <center style="margin-top:20px">
+          <a href="javascript:;" class="k-button close-button" id="clone_line_submit">保存</a>
+          <a href="javascript:;" class="k-button close-button">关闭</a>
+        </center>
+    </div>
     </div>
   </div>
 </div>
+<script id="edit_button" type="text/template">
+        # if (published) { #
+        <b class='k-button unpub'>取消发布</b>
+        # }else{ #
+<a class="k-button k-button-icontext k-grid-edit" href="\#"><span class="k-icon k-edit"></span>编 辑</a>
+<a class="k-button k-button-icontext k-grid-delete" href="\#"><span class="k-icon k-delete"></span>删 除</a>
+        <b class='k-button pub'>发布</b> 
+        # } #
+</script>
+<script id="edit_template" type="text/template">
+  <div id="yys_edit_voyage">
+      <div class="xblock">
+        <h3>基本费用</h3> 
+      <table class="table1 table">
+        <tr>
+          <th>团号</th>
+          <td>
+            <input type="text" data-bind="value:number" class="k-input" /> 
+          </td>
+          <th>签证费</th>
+          <td>
+            <input type="text" data-bind="value:visa_charges" data-role="numerictextbox" data-min="0" data-format="￥\#" /> 
+          </td>
+        </tr>
+          <tr>
+            <th>出发日期</th>
+            <td>
+              <input type="text" data-bind="value:departure_date" data-role="datepicker" /> 
+            </td>
+            <th>第三第四人船票</th>
+            <td>
+              <input type="text" data-role="numerictextbox" data-bind="value:the_fourth" data-min="0" data-format="￥\#" /> 
+            </td>
+          </tr>
+          <tr>
+          <th>产品类型</th>
+            <td>
+              <select data-role="dropdownlist" data-bind="value:type" data-source="['团队游','单船票']"></select> 
+            </td>
+            <th>成人保险费</th>
+            <td>
+              <input type="text" data-role="numerictextbox" data-bind="value:adt_insurance" data-min="0" data-format="￥\#" /> 
+            </td>
+          </tr>
+          <tr>
+            <th>最低价格</th>
+            <td>
+              <input type="text" data-role="numerictextbox" data-bind="value:min_price" data-min="0" data-format="￥\#" /> 
+            </td>
+            <th>儿童保险费</th>
+            <td>
+              <input type="text" data-role="numerictextbox" data-bind="value:chd_insurance" data-min="0" data-format="￥\#" /> 
+            </td>
+          </tr>
+          <tr>
+          <th>全付</th>
+            <td>
+              <select data-role="dropdownlist" data-text-field="text" data-bind="value:pay_all" data-value-field="value" data-source="[{text:'是',value:1},{text:'否',value:0}]"></select> 
+              <div # if(pay_all == 1){ # style="display:none" # }# id="earnestval">
+              定金费：<input type="text" data-role="numerictextbox" data-bind="value:earnest" data-min="0" data-format="￥\#" /> 
+              </div>
+            </td>
+            <th>港务费、税费</th>
+            <td>
+              <input type="text" data-role="numerictextbox" data-bind="value:port_charges" data-min="0" data-format="￥\#" /> 
+            </td>
+          </tr>
+          <tr>
+          <th></th>
+          <td></td>
+            <th>小费</th>
+            <td>
+              <select data-role="dropdownlist" data-text-field="text" data-bind="value:tip_included" data-value-field="value" data-source="[{text:'包含',value:1},{text:'不包含',value:0}]"></select> 
+              <div # if( tip_included==1 ){ # style="display:none" # }# id="tipval">
+              <input type="text" data-role="numerictextbox" data-min="0" data-bind="value:tip" data-format="￥\#" /> 
+              </div>
+            </td>
+          </tr>
+      </table> 
+      </div>
+
+    <div class="xblock">
+      <h3>其他费用</h3> 
+            <div id='other_fees'></div> 
+    </div>
+
+    <div class="xblock">
+      <h3>特惠政策</h3> 
+            <div id='discount'></div> 
+    </div>
+  </div>
+<a class="k-button k-button-icontext" href="yys11.html" target="_blank"><span class="k-icon k-update"></span>设置客舱价格</a>
+</script>
+
 <i class="toggle-arrow arrow4"></i>
 <script type="text/javascript" src="../js/youlun.js"></script>
 </body>

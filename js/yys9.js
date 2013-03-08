@@ -50,8 +50,8 @@ head.ready(function(){
     var cols2 = [
         {title:'行程日期',field:'day_num',template:'<span class="fximg">&nbsp;</span> 第<b>${day_num}</b>天',editor: editor_droplist},
         {title:'停靠港口',field:'port',editor: editor_droplist},
-        {title:'抵达时间',field:'arrival_time',editor:editor_timepicker},
-        {title:'离开时间',field:'departure_time',editor:editor_timepicker},
+        {title:'抵达时间',field:'arrival_time',editor:editor_timepicker,format:"{0:hh:mm}"},
+        {title:'离开时间',field:'departure_time',editor:editor_timepicker,format:"{0:hh:mm}"},
         {title:'行程描述',field:'detail',editor:editor_with_textarea},
         {title:'备注',field:'remark',editor:editor_with_textarea},
         {title:"操作",
@@ -81,9 +81,8 @@ head.ready(function(){
             }
         },
         columns:cols2,
-        editable:'popup',
+        editable:'popup'
         // groupable: true,
         // sortable: true,
     });
-
 });

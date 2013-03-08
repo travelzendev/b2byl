@@ -24,10 +24,7 @@ head.ready(function(){
                 }
             }
         },
-        columns:cols2,
-        // editable:'popup',
-        // groupable: true,
-        // sortable: true,
+        columns:cols2
     });
 
 });

@@ -2,7 +2,7 @@ head.ready(function(){
 
     var windows = $("#window");
     var kendo_window = windows.kendoWindow({
-        width:'500px',
+        width:'800px',
         modal:true,
         visible:false
     }).data("kendoWindow").center();
@@ -17,13 +17,12 @@ head.ready(function(){
         {field:"type",title:"客户类型"},
         {field:"shortname",title:"公司简称"},
         {field:"position",title:"所在省市"},
-        {title:"操作",command: [{
-            name:'edit',
-            text:'编辑'
-        }, {
-            name:'destroy',
-            text:'删除'
-        }]},
+        {title:"操作",width:160,
+            command: [
+                {name:"edit",text:{edit: "编 辑",	update: "保 存",	cancel: "取 消"}},
+                {name:"destroy",text:"删 除"}
+            ]
+        }
     ];
 
     $("#cgsinfo_data").kendoGrid({
@@ -36,6 +35,7 @@ head.ready(function(){
             data:cgsinfo_data,
             schema: {
                 model:{
+                    id:'name',
                     fields:{
                         name:{type:'text'},
                         moban:{type:'text'},
@@ -52,14 +52,13 @@ head.ready(function(){
 
     var cols2 = [
         {field:"name",title:"采购商名称"},
-        {field:"rebate",title:"返佣比"},
-        {title:"操作",command: [{
-            name:'edit',
-            text:'编辑'
-        }, {
-            name:'destroy',
-            text:'删除'
-        }]},
+        {field:"rebate",title:"返佣比",format:'n0',template:'#= rebate #'},
+        {title:"操作",
+            command: [
+                {name:"edit",text:{edit: "编 辑",	update: "保 存",	cancel: "取 消"}},
+                {name:"destroy",text:"删 除"}
+            ]
+        }
     ];
 
     $("#kcxx_data").kendoGrid({
@@ -68,16 +67,23 @@ head.ready(function(){
             data:cgsinfo_data,
             schema: {
                 model:{
+                    id:'name',
                     fields:{
-                        name:{editable:false}
+                        name:{editable:false},
+                        rebate:{type:'number'}
                     }
                 }
             }
         },
         columns:cols2,
-        editable:'popup',
+        editable:'popup'
         // groupable: true,
         // sortable: true,
     });
 
+    kendo.init('.content');
+
+    $('.close-button').click(function(){
+        kendo_window.close();
+    });
 });

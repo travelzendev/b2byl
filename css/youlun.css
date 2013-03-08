@@ -1232,6 +1232,11 @@ h5 {
   padding: 10px;
   background-color: #e3f1fb;
   border: 1px solid #a6cce6; }
+  .border-box b {
+    color: #c00;
+    font-size: 1.2em; }
+  .border-box s {
+    margin-right: 10px; }
 
 #query_block .row {
   padding: 5px; }
@@ -1243,33 +1248,21 @@ h5 {
 #query_block th {
   padding-right: 0; }
 
-.mo-cgs7 {
-  min-height: 800px; }
-  .mo-cgs7 .border-box {
-    margin-top: 30px; }
-    .mo-cgs7 .border-box b {
-      color: #c00;
-      font-size: 1.2em; }
-    .mo-cgs7 .border-box s {
-      margin-right: 10px; }
-  .mo-cgs7 .buttons .k-button {
-    margin-left: 10px; }
-
-.mo-cgs8 .row {
+.mo-cgs8 .row, .mo-yys13 .row {
   padding: 10px; }
-  .mo-cgs8 .row input {
+  .mo-cgs8 .row input, .mo-yys13 .row input {
     padding: 3px;
     border: 1px solid #ccc; }
-.mo-cgs8 .block-title {
+.mo-cgs8 .block-title, .mo-yys13 .block-title {
   color: #36c;
   font-weight: bold;
   padding-bottom: 10px;
   margin: 0;
   border-bottom: 1px solid #36c;
   margin-bottom: 10px; }
-.mo-cgs8 .k-grid {
+.mo-cgs8 .k-grid, .mo-yys13 .k-grid {
   border: 0; }
-.mo-cgs8 .label {
+.mo-cgs8 .label, .mo-yys13 .label {
   display: inline-block;
   color: #666;
   width: 75px; }
@@ -1501,6 +1494,9 @@ center.note {
 #yys8-page .k-edit-form-container {
   width: 800px; }
 
+#yys10-page .k-edit-form-container {
+  width: 800px; }
+
 #yys_edit_line {
   margin-bottom: 20px; }
   #yys_edit_line .table2 {
@@ -1512,3 +1508,26 @@ center.note {
     text-align: left; }
   #yys_edit_line .table1 th {
     text-align: right; }
+
+#yys_edit_voyage {
+  margin-bottom: 20px; }
+  #yys_edit_voyage .table {
+    width: 100%; }
+    #yys_edit_voyage .table td, #yys_edit_voyage .table th {
+      padding: 5px;
+      text-align: left; }
+    #yys_edit_voyage .table th {
+      text-align: right; }
+  #yys_edit_voyage h3 {
+    font-weight: bold;
+    background: #ddd;
+    text-align: left;
+    padding: 3px;
+    margin: 5px 0;
+    font-weight: normal; }
+  #yys_edit_voyage .table2, #yys_edit_voyage .table3 {
+    width: 100%; }
+  #yys_edit_voyage #discount td, #yys_edit_voyage #discount th, #yys_edit_voyage #other_fees td, #yys_edit_voyage #other_fees th {
+    text-align: left; }
+  #yys_edit_voyage .k-toolbar {
+    text-align: left; }

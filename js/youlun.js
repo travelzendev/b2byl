@@ -8,6 +8,22 @@ $(function(){
             function(){
                 kendo.culture('zh-CHS');
 
+                window.action_log = [{
+                    time:'2012-08-10 11:14:14',
+                    user:'ccq2',
+                    ip:'202.12.1.1',
+                    type:'确定退款',
+                    detail:'客服已退款'
+                }];
+
+                window.price_log = [{
+                    time:'2012-08-10 11:14:14',
+                    user:'ccq2',
+                    old:'900',
+                    current:'1000',
+                    remark:'上次出错'
+                }];
+
                 window.contact_info={
                     name:'阿斯',
                     phonenumber:'13800',
@@ -168,10 +184,34 @@ $(function(){
                     chd_insurance:100,
                     earnest:1000,
                     the_fourth:6900,
-                    other_charges:2000,
-                    pay_all:true,
-                    published:false,
-                    cabin_priced:true
+                    pay_all:1,
+                    tip_included:1,
+                    tip:100,
+                    published:0,
+                    cabin_priced:1,
+                    others:[{name:'老人',price:1000}],
+                    discount:[
+                        {name:'歌诗达邮轮儿童（为第三第四人时）免船票',price:-124,unit:'人',remark:'您可以在这里说明特惠政策的适用人群及注意事项等'}
+                    ]
+                },{
+                    id:2,
+                    number:"Kbkfds-f-121321",
+                    type:'团队游',
+                    departure_date:'212-11-10',
+                    min_price:8000,
+                    port_charges:1799,
+                    visa_charges:600,
+                    adt_insurance:100,
+                    chd_insurance:100,
+                    earnest:1000,
+                    the_fourth:6900,
+                    pay_all:0,
+                    tip_included:1,
+                    tip:100,
+                    published:1,
+                    cabin_priced:0,
+                    others:[],
+                    discount:[]
                 }];
 
                 //客舱价格
@@ -183,7 +223,7 @@ $(function(){
                     acting_price:4000,
                     price:4000,
                     coefficient:1.5,
-                    can_be_added:true,
+                    can_be_added:1,
                     left_tickets:6
                 }];
 
@@ -592,6 +632,14 @@ $(function(){
                     head.js('../js/yys11.js');
                 }
 
+                if($('.mo-yys12').length){
+                    head.js('../js/yys12.js');
+                }
+
+                if($('.mo-yys13').length){
+                    head.js('../js/yys13.js');
+                }
+
                 if($('.mo-yys14').length){
                     head.js('../js/yys14.js');
                 }
@@ -600,6 +648,13 @@ $(function(){
                     head.js('../js/yys15.js');
                 }
 
+                if($('.mo-yys17').length){
+                    head.js('../js/yys17.js');
+                }
+
+                if($('.mo-yys18').length){
+                    head.js('../js/yys18.js');
+                }
 
             });
 

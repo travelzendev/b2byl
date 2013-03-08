@@ -129,10 +129,12 @@
             <div class="row">
               <span class="label">默认返佣比：</span> 
               <span class="text">
-                <input id="" style="width:30px" class="k-input" data-bind="value:rebate" name="" type="text" /> 
+                <input data-role="numerictextbox" style="width:60px" class="k-input" data-min="0" data-format="n0" data-bind="value:rebate"  type="text" /> 
                 %
-                <input type="button" class="k-button" style="display:none;" id="update_rebate" data-bind='click:update_rebate' value="确认" />
+                <input type="button" class="k-button" id="update_rebate" data-bind='click:update_rebate' value="确认" />
               </span>
+              &#12288;&#12288;
+              &#12288;&#12288;
               &#12288;&#12288;
               <input type="button" class="k-button" value="添加采购商" id="add_cgs" />
             </div>
@@ -141,6 +143,9 @@
     </div>
     <div id="window">
         <div id="cgsinfo_data"></div>
+        <center style="margin-top:20px">
+          <b id="save_cgs" class="k-button close-button">确 认</b>
+        </center>
     </div>
   </div>
 </div>

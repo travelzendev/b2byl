@@ -41,6 +41,13 @@ head.ready(function(){
             ele.select('.k-last');
         }
 
+        var dataSource = new kendo.data.HierarchicalDataSource({
+            data: zlfl_data.options
+        });
+        var dataSource_null = new kendo.data.HierarchicalDataSource({
+            data: []
+        });
+
         add.bind('click',function(){
             var sel = tcol2.select();
             if( sel.length ){
@@ -61,20 +68,15 @@ head.ready(function(){
             }
         });
         addall.bind('click',function(){
-            var sel = tcol2.select('.k-item');
-            if( sel.length ){
-                tcol1.append(sel);
-                tcol2.remove(sel);
-                removeSelected(tcol1);
-            }
+            tcol1.setDataSource(dataSource);
+            tcol2.setDataSource(dataSource_null);
+            // o.model.detail.splice(0,o.model.detail.length);
+            // console.log(o.model.detail);
         });
         removeall.bind('click',function(){
-            var sel = tcol1.select('.k-item');
-            if( sel.length ){
-                tcol2.append(sel);
-                tcol1.remove(sel);
-            }
-            removeSelected(tcol2);
+            tcol2.setDataSource(dataSource);
+            tcol1.setDataSource(dataSource_null);
+            o.model.detail.splice(0,o.model.detail.length);
         });
     };
 
