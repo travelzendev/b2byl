@@ -7,18 +7,8 @@ head.ready(function(){
         {title:"×代理价格 元/张",field:'acting_price'},
         {title:"×客舱价格 元/张",field:'price'},
         {title:"×单房差系数",field:'coefficient'},
-        {title:"×能否加人",field:'can_be_added',template:'#= can_be_added?"允许":"不允许" #',editor:function(c,o){
-        var html = $('<div> <select data-bind="value:'+o.field+'" name="'+o.field+'"></select> </div>');
-        var droplist = html.find('select');
-
-            droplist.kendoDropDownList({
-                dataTextField: "text",
-                dataValueField: "value",
-                dataSource: [{text:'允许',value:1},{text:'不允许',value:0}]
-            });
-        c.append(html);
-        }},
-        {title:"×剩余张数",field:'left_tickets',format:'n0',template:"${left_tickets}"},
+        {title:"×总张数",field:'count',format:'n0',template:"#= count #"},
+        {title:"房间号",field:'room_num',template:"<a href='javascript:;'>查看</a>"},
         {title:"操作",
             command: [
                 {name:"edit",text:{edit: "编 辑",	update: "保 存",	cancel: "取 消"}},
@@ -38,18 +28,36 @@ head.ready(function(){
                         cabin:{editable:false},
                         room:{editable:false},
                         max:{editable:false},
+                        room_num:{editable:false},
                         acting_price:{type:'number'},
                         price:{type:'number'},
                         coefficient:{type:'number'},
-                        left_tickets:{type:'number'}
+                        count:{type:'number'}
                     }
                 }
             }
         },
         columns:cols2,
-        editable:'inline',
-        // groupable: true,
-        // sortable: true,
+        editable:{
+            mode:'popup',
+            template:kendo.template($('#room_price_tmpl').html())
+        },
+        edit:function(e){
+            var count = $(e.container).find('#room_count').data('kendoNumericTextBox');
+            count.bind('spin',function(i){
+                var that = i.sender;
+                var val = that._value;
+                var len = $(e.container).find('.room_num').size();
+
+                if(val>=len){
+                    e.model.room_num.push({id:''});
+                }else{
+                    e.model.room_num.pop();
+                };
+
+                kendo.bind('#roomcount',e.model.room_num);
+            });
+        }
     });
 
 });

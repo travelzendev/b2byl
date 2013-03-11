@@ -218,13 +218,12 @@ $(function(){
                 window.cabin_price_data = [{
                     cabin:'海景房',
                     room:'标准1',
-                    room_id:1,
+                    room_num:[{id:'303'},{id:'303iii'}],
                     max:3,
                     acting_price:4000,
                     price:4000,
                     coefficient:1.5,
-                    can_be_added:1,
-                    left_tickets:6
+                    count:2
                 }];
 
                 //采购商公司

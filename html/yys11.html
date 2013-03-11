@@ -134,6 +134,47 @@
   </div>
 </div>
 <i class="toggle-arrow arrow4"></i>
+<script id="room_price_tmpl" type="text/template">
+  <div id="yys_room_price">
+  <table class="table">
+    <tr>
+      <th>代理价格</th>
+      <td>
+        <input data-role="numerictextbox" data-min="0" data-format="n0" data-bind="value:acting_price" type="text" />
+        元/张
+      </td>
+    </tr>
+    <tr>
+      <th>客舱价格</th>
+      <td>
+        <input data-role="numerictextbox" data-min="0" data-format="n0" data-bind="value:price" type="text" />
+        元/张
+      </td>
+    </tr>
+    <tr>
+      <th>单房差系数</th>
+      <td>
+        <input data-role="numerictextbox" data-min="0" data-format="n1" data-bind="value:coefficient" type="text" />
+      </td>
+    </tr>
+    <tr>
+      <th>总房间数</th>
+      <td>
+        <input data-role="numerictextbox" id="room_count" data-min="0" data-format="n0" data-bind="value:count" type="text" />
+      </td>
+    </tr>
+    <tr>
+    <th>房间号</th>
+      <td>
+      <div data-template="room_num_item" data-bind="source:room_num" id="roomcount"></div>
+      </td>
+    </tr>
+  </table>
+  </div>
+</script>
+<script type="text/template" id="room_num_item">
+    <input type="text" class="k-input room_num" data-bind="value:id" />
+</script>
 <script type="text/javascript" src="../js/youlun.js"></script>
 </body>
 </html>

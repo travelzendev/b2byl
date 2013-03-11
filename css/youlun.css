@@ -1509,25 +1509,31 @@ center.note {
   #yys_edit_line .table1 th {
     text-align: right; }
 
-#yys_edit_voyage {
+#yys_edit_voyage, #yys_room_price {
   margin-bottom: 20px; }
-  #yys_edit_voyage .table {
+  #yys_edit_voyage .table, #yys_room_price .table {
     width: 100%; }
-    #yys_edit_voyage .table td, #yys_edit_voyage .table th {
+    #yys_edit_voyage .table td, #yys_edit_voyage .table th, #yys_room_price .table td, #yys_room_price .table th {
       padding: 5px;
       text-align: left; }
-    #yys_edit_voyage .table th {
+    #yys_edit_voyage .table th, #yys_room_price .table th {
       text-align: right; }
-  #yys_edit_voyage h3 {
+  #yys_edit_voyage h3, #yys_room_price h3 {
     font-weight: bold;
     background: #ddd;
     text-align: left;
     padding: 3px;
     margin: 5px 0;
     font-weight: normal; }
-  #yys_edit_voyage .table2, #yys_edit_voyage .table3 {
+  #yys_edit_voyage .table2, #yys_edit_voyage .table3, #yys_room_price .table2, #yys_room_price .table3 {
     width: 100%; }
-  #yys_edit_voyage #discount td, #yys_edit_voyage #discount th, #yys_edit_voyage #other_fees td, #yys_edit_voyage #other_fees th {
+  #yys_edit_voyage #discount td, #yys_edit_voyage #discount th, #yys_edit_voyage #other_fees td, #yys_edit_voyage #other_fees th, #yys_room_price #discount td, #yys_room_price #discount th, #yys_room_price #other_fees td, #yys_room_price #other_fees th {
     text-align: left; }
-  #yys_edit_voyage .k-toolbar {
+  #yys_edit_voyage .k-toolbar, #yys_room_price .k-toolbar {
     text-align: left; }
+
+#yys_room_price #roomcount {
+  width: 170px; }
+#yys_room_price .room_num {
+  margin: 3px 3px 3px 0;
+  width: 70px; }
