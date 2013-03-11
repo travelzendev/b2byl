@@ -1,5 +1,9 @@
 head.ready(function(){
 
+    window.spin_blur = function(e){
+        e.sender.element.blur();
+    }
+
     var cols2 = [
         {title:"客舱类型",field:'cabin'},
         {title:"房型",field:'room'},
@@ -44,11 +48,10 @@ head.ready(function(){
         },
         edit:function(e){
             var count = $(e.container).find('#room_count').data('kendoNumericTextBox');
-            count.bind('spin',function(i){
+            count.bind('change',function(i){
                 var that = i.sender;
                 var val = that._value;
                 var len = $(e.container).find('.room_num').size();
-
 
                 if(val>=len){
                     if(val==0) return;
