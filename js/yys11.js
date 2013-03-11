@@ -49,7 +49,9 @@ head.ready(function(){
                 var val = that._value;
                 var len = $(e.container).find('.room_num').size();
 
+
                 if(val>=len){
+                    if(val==0) return;
                     e.model.room_num.push({id:''});
                 }else{
                     e.model.room_num.pop();
