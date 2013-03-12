@@ -159,20 +159,18 @@
       <div class="block result-block">
         <div class="block-head clearfix"><div class=" result-filters">
           <span id="sort_by_price" class="sort-item">价格<i class="arrow arrow2"></i></span> 
-<div id="price_panel" class="custom">
-      		<div class="init">
-      			<span>¥</span>
-	      		<input type="text" value="最低价" d="最低价" class="">
-	      		<span>至¥</span>
-	      		<input type="text" value="最高价" d="最高价" class="">
-      		</div>
-      		<div class="foused" style="display: none;">
-      			<p>
-	      			<a class="btn_common" onclick="return false;" href="#" lg="1025" ytag="10011">清除</a>
-	      			<a class="btn_strong" onclick="return false;" href="#" lg="1025" ytag="10010">确定</a>
-      			</p>
-      		</div>
-      </div>
+<span id="price_panel" class="">
+  <span class="init">
+    &#165;&nbsp;<input placeholder="最低价" type="text" class="k-input" /> 至
+    &#165;&nbsp;<input placeholder="最高价"type="text" class="k-input" />
+  </span>
+    <div class="price_panel_button">
+      <center>
+      <button id="price_range_submit">确定</button>&#12288;
+      <button id="price_range_cancel">取消</button>
+      </center>
+    </div>
+</span>
       <span class="sort-item" id="sort_by_days">天数<i class="arrow arrow2"></i></span>
       <span class="sort-selector">
           <option value="">行程天数</option> 

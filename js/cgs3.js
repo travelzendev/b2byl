@@ -8,13 +8,14 @@ head.ready(function(){
         opts = $.extend({
             hide:true,
             showtop:10,
+            min:0,
             stop:0
         },opts);
 
         var postop = $(window).scrollTop();
 
-        if(opts.hide && postop < opts.showtop){
-            t.hide();
+        if(opts.hide && (postop < opts.showtop || t.offset().top < opts.min)){
+            t.addClass('hzind');
         }
 
         t.bind('click',function(){
@@ -24,11 +25,12 @@ head.ready(function(){
         if(opts.hide){
             $(window).bind('scroll',function(){
                 var postop = $(this).scrollTop();
+                var min = t.offset().top >= opts.min;
 
-                if( postop > opts.showtop ){
-                    t.show(100);
+                if( postop > opts.showtop && min ){
+                    t.removeClass('hzind');
                 }else{
-                    t.hide(100);
+                    t.addClass('hzind');
                 }
             });
         }

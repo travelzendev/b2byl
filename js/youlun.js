@@ -563,6 +563,10 @@ $(function(){
                     ]
                 };
 
+                if($('.mo-cgs2').length){
+                    head.js('../js/cgs2.js');
+                }
+
                 if($('.mo-cgs3').length){
                     head.js('../js/cgs3.js');
                 }

@@ -182,16 +182,16 @@
         </div>
         <div id="yl_detail_total" class="total-block clearfix block">
           <h3 class="clearfix">购物车<span>共<s data-bind="text:total.count_customer">0</s>人</span></h3> 
-          <p><label>总价：</label><span class="price">&#165;<b data-bind="text:total.total_money"></b></span></p>
-          <p><label>结算价：</label><span class="price">&#165;<b data-bind="text:total.calc_money"></b></span></p>
-          <p><label>返佣：</label><span class="price">&#165;<b data-bind="text:total.return_money"></b></span></p>
+          <p><label>总价：</label><span class="iprice black">&#165;<b data-bind="text:total.total_money"></b></span></p>
+          <p><label>结算价：</label><span class="iprice orange">&#165;<b data-bind="text:total.calc_money"></b></span></p>
+          <p><label>返佣：</label><span class="iprice green">&#165;<b data-bind="text:total.return_money"></b></span></p>
           <div data-bind="source:total.source" data-template="total_added_row"></div>
         </div>
       </div>
     </div>
   </div>
 </div>
-<div id="backTop" data-showtop="100"> 返回顶部 </div>
+<div id="backTop" data-min="950" data-showtop="200"> 返回顶部 </div>
 <i class="toggle-arrow arrow4"></i>
 <script type="text/template" id="total_added_row">
     <div class="total_addrow">
