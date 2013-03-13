@@ -951,6 +951,20 @@ h5 {
   position: fixed;
   margin-left: 0px; }
 
+.fxcabinwrap_div {
+  margin: 10px 0; }
+
+.cabin-fixed {
+  height: 37px; }
+  .cabin-fixed .fxcabinwrap {
+    top: 95px;
+    left: auto;
+    position: fixed;
+    margin-left: 0px;
+    width: 800px;
+    background: #fff;
+    z-index: 100; }
+
 .quicksel {
   height: 281px;
   border: 2px solid #f90;
@@ -1408,19 +1422,17 @@ h5 {
   background: url(../img/search.png) no-repeat 0 50%;
   cursor: pointer; }
 
-.fxcabinwrap {
-  margin: 10px 0; }
-  .fxcabinwrap a {
-    text-align: center;
-    display: block;
-    float: left;
-    width: 160px;
-    padding: 10px 0;
-    border: 1px solid #ccc;
-    margin-right: 5px; }
-    .fxcabinwrap a:hover {
-      text-decoration: none;
-      border: 1px solid #36c; }
+.fxcabinwrap a {
+  text-align: center;
+  display: block;
+  float: left;
+  width: 160px;
+  padding: 10px 0;
+  border: 1px solid #ccc;
+  margin-right: 5px; }
+  .fxcabinwrap a:hover {
+    text-decoration: none;
+    border: 1px solid #36c; }
 
 #yl_detail_calc .k-numerictextbox {
   width: 70px; }

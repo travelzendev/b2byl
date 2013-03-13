@@ -99,7 +99,7 @@ head.ready(function(){
         e.preventDefault();
         var anchor = this.href.split('#')[1];
         var offsetTop = $('#'+anchor).offset().top;
-        window.scrollTo(0,offsetTop-95);
+        window.scrollTo(0,offsetTop-95-37);
     });
 
     function reset_room(room_data,tr){
@@ -320,38 +320,6 @@ head.ready(function(){
     viewModel.trigger('change');
 
     $('#submit').bind('click',function(e){
-
-        if (!Array.prototype.filter)
-            {
-                Array.prototype.filter = function(fun /*, thisp */)
-                {
-                    "use strict";
-
-                    if (this == null)
-                        throw new TypeError();
-
-                    var t = Object(this);
-                    var len = t.length >>> 0;
-                    if (typeof fun != "function")
-                        throw new TypeError();
-
-                    var res = [];
-                    var thisp = arguments[1];
-                    for (var i = 0; i < len; i++)
-                    {
-                        if (i in t)
-                            {
-                                var val = t[i]; // in case fun mutates this
-                                if (fun.call(thisp, val, i, t))
-                                    res.push(val);
-                            }
-                    }
-
-                    return res;
-                };
-            }
-
-
             e.preventDefault();
             //存储在本地，不提交
             var submited = viewModel.toJSON();
@@ -401,11 +369,24 @@ head.ready(function(){
         var that=$(this);
         var postop = that.scrollTop();
         var ele = $('.total-block');
+        var ele2 = $('.fxcabinwrap_div');
+        var ele3 = $('#yl_detail_info');
         if(postop>563){
             !ele.hasClass('total-fixed') && ele.addClass('total-fixed');
         }else{
             ele.removeClass('total-fixed');
         };
+
+        if(postop>710){
+            if(postop> ele3.offset().top+ele3.height()-95){
+                ele2.removeClass('cabin-fixed');
+            }else{
+                !ele2.hasClass('cabin-fixed') && ele2.addClass('cabin-fixed');
+            }
+        }else{
+            ele2.removeClass('cabin-fixed');
+        };
+
     });
 
 });

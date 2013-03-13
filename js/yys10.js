@@ -33,8 +33,9 @@ head.ready(function(){
                 model:{
                     id:'id',
                     fields:{
-                        pay_all:{type:'number',defaultValue:0},
+                        pay_all:{type:'number',defaultValue:1},
                         published:{type:'number',defaultValue:0},
+                        tip_included:{type:'number',defaultValue:1},
                         cabin_priced:{type:'number',defaultValue:0}
                     }
                 }
